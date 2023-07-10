@@ -11,8 +11,32 @@ import java.util.Set;
 @Table(name ="trabajador")
 public class Trabajador {
     @Id
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column int idTrabajador;
+    int idTrabajador;
+    @Column
+    private int run;
+    @Column
+    private String nombre;
+    @Column
+    private String apellido1;
+    @Column
+    private String apellido2;
+    @Column
+    private String email;
+    @ManyToOne
+    @JoinColumn(name = "id_inst_prevision")
+    private InstitucionPrevision institucionPrevision;
+
+    @ManyToOne
+    @JoinColumn(name = "id_inst_salud")
+    private InstitucionSalud institucionSalud;
+
+    @Column(name = "telefono")
+    private Long telefono;
+
+
+
 
 
 
