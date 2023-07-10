@@ -4,6 +4,8 @@ package cl.awakelab.liquidacion.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 @Entity
 @Table(name = "empleador")
@@ -28,7 +30,10 @@ public class Empleador {
     private Long telefono;
     @ManyToMany
     @JoinTable(
-        name = "empl_trab",
-        joinColumns = @JoinColumn(name = )
+            name = "empl_trab",
+            joinColumns = @JoinColumn(name = "id_empleador"),
+            inverseJoinColumns = @JoinColumn(name = "id_trabajador")
+    )
+    private Set<Trabajador> trabajadores;
 
 }
