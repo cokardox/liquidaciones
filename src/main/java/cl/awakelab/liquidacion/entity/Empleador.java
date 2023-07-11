@@ -11,20 +11,20 @@ import java.util.Set;
 @Table(name = "empleador")
 public class Empleador {
     @Id
-    @Column
+    @Column(name = "id_empleador")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEmpleador;
-    @Column
+    @Column(name = "run")
     private int run;
-    @Column
+    @Column(name = "nombre")
     private String nombre;
-    @Column
+    @Column(name = "apellido_1")
     private String apellido1;
-    @Column
+    @Column(name = "apellido_2")
     private String apellido2;
-    @Column
+    @Column(name = "direccion")
     private String direccion;
-    @Column
+    @Column(name = "email")
     private String email;
     @Column(name = "telefono")
     private Long telefono;

@@ -11,42 +11,42 @@ import java.time.LocalDate;
 @Table(name = "liquidacion")
 public class Liquidacion {
     @Id
-    @Column
+    @Column(name = "id_liquidacion")
     private long idLiquidacion;
 
     @ManyToOne
     @JoinColumn
     private Trabajador trabajador;
 
-    @Column
+    @Column(name = "periodo")
     private LocalDate periodo;
 
-    @Column
+    @Column(name = "sueldo_imponible")
     private int sueldoImponible;
 
-    @Column
+    @Column(name = "sueldo_liquido")
     private int sueldoLiquido;
 
     @ManyToOne
     @JoinColumn
     private InstitucionSalud institucionSalud;
 
-    @Column
+    @Column(name = "monto_inst_salud")
     private int montoInstSalud;
 
     @ManyToOne
     @JoinColumn
     private InstitucionPrevision institucionPrevisional;
 
-    @Column
+    @Column(name = "monto_inst_previsional")
     private int montoInstPrevisional;
 
-    @Column
+    @Column(name = "total_descuento")
     private int totalDescuento;
 
-    @Column
+    @Column(name = "total_haberes")
     private int totalHaberes;
 
-    @Column
+    @Column(name = "anticipo")
     private int anticipo;
 }

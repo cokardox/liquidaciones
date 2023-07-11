@@ -10,13 +10,13 @@ import lombok.Data;
 @Table(name = "institucion_prevision")
 public class InstitucionPrevision {
     @Id
-    @Column
+    @Column(name = "id_inst_prevision")
     private int idInstPrevision;
 
-    @Column
+    @Column(name = "descripcion")
     private String descripcion;
 
-    @Column
+    @Column(name = "porc_dcto")
     private float porcDcto;
 
 

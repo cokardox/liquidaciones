@@ -12,22 +12,22 @@ import java.time.LocalDate;
 @Table(name ="usuario")
 public class Usuario {
     @Id
-    @Column
+    @Column(name ="id_usuario")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
-    @Column
+    @Column(name = "run")
     private int run;
-    @Column
+    @Column(name = "clave")
     private String clave;
-    @Column
+    @Column(name = "nombre")
     private String nombre;
-    @Column
+    @Column(name = "apellido_1")
     private String apellido1;
-    @Column
+    @Column(name = "apellido_2")
     private  String apellido2;
-    @Column
-    private LocalDate fecha_creacion;
-    @Column
+    @Column(name = "fecha_creacion")
+    private LocalDate fechaCreacion;
+    @Column(name = "telefono")
     private Long telefono;
 
 

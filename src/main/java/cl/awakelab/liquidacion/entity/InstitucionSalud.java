@@ -12,9 +12,9 @@ public class InstitucionSalud {
     @Column(name = "id_inst_salud")
     private int idInstSalud;
 
-    @Column
+    @Column(name = "descripcion")
     private String descripcion;
 
-    @Column
+    @Column(name = "porc_dcto")
     private float porcDcto;
 }

@@ -8,11 +8,11 @@ import lombok.Data;
 @Table(name = "perfil")
 public class Perfil {
     @Id
-    @Column
+    @Column(name = "id_perfil")
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPerfil;
-    @Column
+    @Column(name = "descripcion")
     private String descripcion;
-    @Column
+    @Column(name = "estado")
     private int estado;
 }

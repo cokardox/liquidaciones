@@ -11,18 +11,18 @@ import java.util.Set;
 @Table(name ="trabajador")
 public class Trabajador {
     @Id
-    @Column
+    @Column(name = "id_trabajador")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int idTrabajador;
-    @Column
+    @Column(name = "run")
     private int run;
-    @Column
+    @Column(name = "nombre")
     private String nombre;
-    @Column
+    @Column(name = "apellido_1")
     private String apellido1;
-    @Column
+    @Column(name = "apellido_2")
     private String apellido2;
-    @Column
+    @Column(name = "email")
     private String email;
     @ManyToOne
     @JoinColumn(name = "id_inst_prevision")
