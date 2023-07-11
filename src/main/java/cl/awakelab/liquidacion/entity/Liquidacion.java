@@ -15,7 +15,7 @@ public class Liquidacion {
     private long idLiquidacion;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "id_trabajador")
     private Trabajador trabajador;
 
     @Column(name = "periodo")
@@ -28,14 +28,14 @@ public class Liquidacion {
     private int sueldoLiquido;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "id_inst_salud")
     private InstitucionSalud institucionSalud;
 
     @Column(name = "monto_inst_salud")
     private int montoInstSalud;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "id_inst_previsional")
     private InstitucionPrevision institucionPrevisional;
 
     @Column(name = "monto_inst_previsional")

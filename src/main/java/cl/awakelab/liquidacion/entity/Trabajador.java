@@ -13,7 +13,7 @@ public class Trabajador {
     @Id
     @Column(name = "id_trabajador")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int idTrabajador;
+    private int idTrabajador;
     @Column(name = "run")
     private int run;
     @Column(name = "nombre")
@@ -33,12 +33,7 @@ public class Trabajador {
     private InstitucionSalud institucionSalud;
 
     @Column(name = "telefono")
-    private Long telefono;
-
-
-
-
-
+    private long telefono;
 
     @ManyToMany(mappedBy = "trabajadores")
     private Set<Empleador> empleadores;

@@ -27,7 +27,10 @@ public class Empleador {
     @Column(name = "email")
     private String email;
     @Column(name = "telefono")
-    private Long telefono;
+    private long telefono;
+    @OneToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
     @ManyToMany
     @JoinTable(
             name = "empl_trab",
