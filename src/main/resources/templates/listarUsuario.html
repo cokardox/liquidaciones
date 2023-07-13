@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Listar Usuarios</title>
 </head>
+<header th:include="~{../static/html/navSecundario.html}"></header>
 <body>
-
+            <div class="lista-usuario">
+                <div class="row">
+                    <div class="col">ID</div>
+                    <div class="col">Run</div>
+                    <div class="col">Nombre</div>
+                    <div class="col">Apellido 1</div>
+                    <div class="col">Email</div>
+                    <div class="col">Perfil</div>
+                    <div class="col">Acción</div>
+                </div>
+                <div class="row">
+                    <div class="col">1</div>
+                    <div class="col">12345678-9</div>
+                    <div class="col">Juan</div>
+                    <div class="col">Pérez</div>
+                    <div class="col">juan@example.com</div>
+                    <div class="col">Usuario</div>
+                    <div class="col"><button class="btn btn-primary">Editar</button></div>
+                </div>
+            </div>
 </body>
 </html>

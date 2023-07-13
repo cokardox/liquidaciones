@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>Crear Usuario</title>
+</head>
+<header th:include="~{../static/html/navSecundario.html}"></header>
+<body>
+<div class="form-rusuario rounded>">
+  <div class="form-registro form-rn col-md-6 rounded">
+    <form>
+      <div class="text-center mb-3">
+        <p><h5>Crear Usuario</h5></p>
+      </div>
+      <div class="mb-3"  >
+        <label for="exampleInputEmail1" class="form-label">RUN</label>
+        <input type="run" class="form-control" id="run" aria-describedby="emailHelp">
+        <div id="runlHelp" class="form-text"></div>
+      </div>
+      <div class="mb-3"  >
+        <label for="exampleInputEmail1" class="form-label">Nombre</label>
+        <input type="nombre" class="form-control" id="nombre" aria-describedby="emailHelp">
+        <div id="nombreHelp" class="form-text"></div>
+      </div>
+      <div class="mb-3"  >
+        <label for="exampleInputEmail1" class="form-label">Apellido 1</label>
+        <input type="apellido" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text"></div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Apellido 2(opcional)</label>
+        <input type="apellido" class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password">
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="empleadorCheck">
+            <label class="form-check-label">Empleador</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3 form-check d-flex justify-content-end">
+            <input type="checkbox" class="form-check-input" id="contadorCheck">
+            <label class="form-check-label"> Contador</label>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+  </div>
+</div>
+
+<footer th:include="~{../static/html/footer.html}"></footer>
+</body>
+</html>

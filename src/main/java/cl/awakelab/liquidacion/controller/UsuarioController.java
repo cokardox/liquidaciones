@@ -10,8 +10,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping("/usuario")
 public class UsuarioController {
+    @Autowired
+    IUsuarioService objectUsuarioService;
+
     @GetMapping("/registrarse")
-    public String index() {return "registrarse";}
+    public String registrarse() {return "registrarse";}
+
+    @GetMapping("/formUsuario")
+    public String formUsuario() {return "formUsuario";}
+
+    @GetMapping("/listUsuario")
+    public String listUsuario() {return "listUsuario";}
 
 }
