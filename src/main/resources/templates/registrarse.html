@@ -7,8 +7,19 @@
 </head>
 <header th:include="~{../static/html/header.html}"></header>
 <body>
-      <div class="form-registro form-rn col-md-6 rounded">
+      <div class="form-rusuario rounded>">
+        <div class="form-registro form-rn col-md-6 rounded">
           <form>
+            <div class="mb-3"  >
+              <label for="exampleInputEmail1" class="form-label">RUN</label>
+              <input type="run" class="form-control" id="run" aria-describedby="emailHelp">
+              <div id="runlHelp" class="form-text"></div>
+            </div>
+            <div class="mb-3"  >
+              <label for="exampleInputEmail1" class="form-label">NOMBRE</label>
+              <input type="email" class="form-control" id="nombre" aria-describedby="emailHelp">
+              <div id="nombreHelp" class="form-text"></div>
+            </div>
             <div class="mb-3"  >
               <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
               <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -18,12 +29,23 @@
               <label for="exampleInputPassword1" class="form-label">Contraseña</label>
               <input type="password" class="form-control" id="exampleInputPassword1">
             </div>
+            <div class="row">
+            <div class="col-md-4">
             <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Verificado</label>
+              <input type="checkbox" class="form-check-input" id="empleadorCheck">
+              <label class="form-check-label">Empleador</label>
             </div>
+            </div>
+            <div class="col-md-4">
+            <div class="mb-3 form-check d-flex justify-content-end">
+              <input type="checkbox" class="form-check-input" id="contadorCheck">
+              <label class="form-check-label"> Contador</label>
+            </div>
+            </div>
+              </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
+      </div>
       </div>
 
 <footer th:include="~{../static/html/footer.html}"></footer>

@@ -2,15 +2,13 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <meta charset="UTF-8">
     <title>Liquidaciones</title>
 </head>
 <header th:include="~{../static/html/header.html}"></header>
 <body>
 <div class="container">
-
-
-
                 <div class="list-group">
                     <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
                         <img src="img/imagen4.png" alt="twbs" width="150" height="150" class="rounded-circle flex-shrink-0">
@@ -77,15 +75,37 @@
                     </div>
                 </a>
             </div>
-
-
-
-
-
-
         </section>
 
     </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="img/contacto.png" width="400px" height="400px" alt="Imagen" class="img-fluid">
+        </div>
+        <div class="form-contacto">
+        <div class="col-md-6">
+            <h2>Formulario de Contacto</h2>
+            <form>
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea class="form-control" id="mensaje" name="mensaje"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
     <footer th:include="~{../static/html/footer.html}"></footer>
 </body>
 </html>
