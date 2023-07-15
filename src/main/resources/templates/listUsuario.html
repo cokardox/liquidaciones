@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Listar Usuarios</title>
+</head>
+<header th:include="~{../static/html/navSecundario.html}"></header>
+<body>
+
+
+<div class="form-list rounded">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Run</th>
+                <th>Nombre</th>
+                <th>Apellido 1</th>
+                <th>Email</th>
+                <th>Perfil</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="usuario: ${usuarios}">
+                <td th:text="${usuario.idUsuario}"></td>
+                <td th:text="${usuario.run}"></td>
+                <td th:text="${usuario.nombre}"></td>
+                <td th:text="${usuario.apellido1}"></td>
+                <td th:text="${usuario.email}"></td>
+                <td th:text="${usuario.perfil.descripcion}"></td>
+                <td><button class="btn btn-primary">Editar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.util.List;
+
 
 @Data
 @Entity
@@ -20,4 +22,10 @@ public class InstitucionPrevision {
     private float porcDcto;
 
 
+
+    @OneToMany(mappedBy = "institucionPrevision")
+    List<Trabajador> Trabajadores;
+
+    @OneToMany(mappedBy = "institucionPrevisional")
+    List<Liquidacion> liquidacionesPrev;
 }

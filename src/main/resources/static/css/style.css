@@ -78,3 +78,20 @@ nav {
     margin:10px auto;
 
 }
+.navbar-custom {
+    background-color: #0d6efd;
+}
+
+.form-contacto {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 10px;
+    background-color:#F8F9F9 ;
+
+}
+.form-list {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 10px;
+
+}

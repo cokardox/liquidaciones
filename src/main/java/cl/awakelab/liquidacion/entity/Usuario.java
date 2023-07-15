@@ -1,12 +1,15 @@
 package cl.awakelab.liquidacion.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -30,7 +33,7 @@ public class Usuario {
 
     @Column(name = "apellido_2")
     private String apellido2;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_perfil")
     private Perfil perfil;
@@ -39,10 +42,18 @@ public class Usuario {
     private String email;
 
     @Column(name = "fecha_creacion")
+    @CreationTimestamp
     private LocalDateTime fechaCreacion;
 
     @Column(name = "telefono")
     private long telefono;
+    @OneToMany(mappedBy = "usuario") //hace referencia al atributo tipo Usuario de la clase empleador
+    private List<Empleador> empleadores;
+
+
+
+
+
 
 
 }

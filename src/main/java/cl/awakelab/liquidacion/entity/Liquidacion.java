@@ -49,4 +49,7 @@ public class Liquidacion {
 
     @Column(name = "anticipo")
     private int anticipo;
+
+
+
 }

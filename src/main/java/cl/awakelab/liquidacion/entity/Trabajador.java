@@ -4,6 +4,7 @@ package cl.awakelab.liquidacion.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -24,6 +25,7 @@ public class Trabajador {
     private String apellido2;
     @Column(name = "email")
     private String email;
+
     @ManyToOne
     @JoinColumn(name = "id_inst_prevision")
     private InstitucionPrevision institucionPrevision;
@@ -35,7 +37,10 @@ public class Trabajador {
     @Column(name = "telefono")
     private long telefono;
 
+    @OneToMany
+    List<Liquidacion> listaTrabajadores;
+
     @ManyToMany(mappedBy = "trabajadores")
-    private Set<Empleador> empleadores;
+    private List<Empleador> listaEmpleadores;
 
 }
