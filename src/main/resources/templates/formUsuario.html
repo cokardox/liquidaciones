@@ -2,11 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <meta charset="UTF-8">
-    <title>Crear Usuario</title>
+    <title>Listar Usuarios</title>
 </head>
 <header th:include="~{../static/html/navSecundario.html}"></header>
 <body>
+
+
+
+
 <div class="form-rusuario rounded">
     <div class="form-registro form-rn col-md-6 rounded">
         <form th:action="@{/crearUsuario}" id="formUsuario" method="post">

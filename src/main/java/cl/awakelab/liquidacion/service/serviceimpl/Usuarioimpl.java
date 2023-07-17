@@ -29,13 +29,25 @@ public class Usuarioimpl implements IUsuarioService {
     }
 
     @Override
-    public Usuario actualizarUsuario(Usuario usuarioActulizar, int idUsuario) {
-        return null;
+    public Usuario actualizarUsuario(Usuario usuarioActualizar, int idUsuario) {
+        Usuario usuario = objUsuarioRepo.findById(idUsuario).orElseThrow(() -> new NoSuchElementException("Usuario no encontrado"));
+        usuario.setRun(usuarioActualizar.getRun());
+        usuario.setNombre(usuarioActualizar.getNombre());
+        usuario.setClave(usuarioActualizar.getClave());
+        usuario.setApellido1(usuarioActualizar.getApellido1());
+        usuario.setApellido2(usuarioActualizar.getApellido2());
+        usuario.setEmail(usuarioActualizar.getEmail());
+        usuario.setTelefono(usuarioActualizar.getTelefono());
+        return objUsuarioRepo.save(usuario);
     }
 
     @Override
     public void eliminarUsuario(Usuario usuario) {
 
+    }
+    @Override
+    public void eliminarUsuario2(int idUsuario) {
+        objUsuarioRepo.deleteById(idUsuario);
     }
 }
 

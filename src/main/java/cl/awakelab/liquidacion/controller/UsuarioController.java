@@ -87,6 +87,13 @@ public class UsuarioController {
         return "redirect:/listUsuario";
     }
 
+    @PostMapping("/registrarse")
+    public String registrarse(@ModelAttribute Usuario usuario){
+        usuario.setFechaCreacion(LocalDateTime.now());
+        objUsuarioService.crearUsuario(usuario);
+        return "redirect:/";
+    }
+
 
     @GetMapping("/listUsuario")
     public String listarUsuarios(Model model){
@@ -94,4 +101,43 @@ public class UsuarioController {
         model.addAttribute("usuarios", listaUsuarios);
         return "listUsuario";
     }
+
+  /*  @GetMapping("/{idUsuario}/eliminar")
+    public String mostrarEliminarUsuario(@PathVariable int idUsuario, Model model){
+        Usuario usuarioEliminar = objUsuarioService.buscarUsuarioPorId(idUsuario);
+        model.addAttribute("usuario", usuarioEliminar);
+        return "listUsuario";
+    }*/
+    @PostMapping("/eliminar/{idUsuario}")
+    public String eliminarUsuarioPorId(@PathVariable int idUsuario) {
+        objUsuarioService.eliminarUsuario2(idUsuario);
+        return "redirect:/listUsuario";
+    }
+
+
+    //////ACTUALIZAR
+
+
+
+    /*
+    @PostMapping("/{idUsuario}/editar")
+    public String actualizarUsuario(@PathVariable int idUsuario, @ModelAttribute Usuario usuario){
+        objUsuarioService.actualizarUsuario2(usuario);
+        return "redirect:/listUsuario";
+    }
+
+*/
+    @PostMapping("/actualizar/{idUsuario}")
+    public String actualizarUsuario(@PathVariable int idUsuario, @ModelAttribute Usuario usuario) {
+        objUsuarioService.actualizarUsuario(usuario, idUsuario);
+        return "redirect:/listUsuario";
+    }
+    @GetMapping("/{idUsuario}/editar")
+    public String mostrarFormularioEditarUsuario(@PathVariable int idUsuario, Model model) {
+        Usuario usuarioParaEditar = objUsuarioService.buscarUsuarioPorId(idUsuario);
+        model.addAttribute("usuario", usuarioParaEditar);
+        return "editarUsuario";
+    }
+
+
 }
