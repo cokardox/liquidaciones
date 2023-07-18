@@ -14,9 +14,9 @@
 
 <div class="form-rusuario rounded">
     <div class="form-registro form-rn col-md-6 rounded">
-        <form th:action="@{/crearUsuario}" id="formUsuario" method="post">
+        <form th:action="@{/crearEmpleador}" id="formUsuario" method="post">
             <div class="text-center mb-3">
-                <h5>Crear Usuario</h5>
+                <h5>Crear Empleador</h5>
             </div>
             <div class="mb-3">
                 <label for="run" class="form-label">RUN</label>
@@ -43,20 +43,17 @@
                 <input type="email" class="form-control" id="email" name="email">
             </div>
             <div class="mb-3">
-                <label for="clave" class="form-label">Clave</label>
-                <input type="password" class="form-control" id="clave" name="clave">
+                <label for="direccion" class="form-label">Direccion</label>
+                <input type="text" class="form-control" id="direccion" name="direccion">
             </div>
-            <div class="form-group mb-3">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="perfil.idPerfil" value="2" id="inlineRadio1">
-                    <label class="form-check-label" for="inlineRadio1">Contador</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="perfil.idPerfil" value="3" id="inlineRadio2">
-                    <label class="form-check-label" for="inlineRadio2">Empleador</label>
-                </div>
+            <div class="mb-3">
+                <label for="usuarioId" class="form-label">Usuario Asignado</label>
+                <select class="form-control" id="usuarioId" name="usuarioId">
+                    <option th:each="usuario: ${usuarios}" th:value="${usuario.idUsuario}" th:text="${usuario.nombre + ' ' + usuario.apellido1}"></option>
+                </select>
             </div>
-            <button type="submit" class="btn btn-primary">Registrar</button>
+
+            <button type="submit" class="btn btn-primary">Agregar Empleador</button>
         </form>
     </div>
 </div>

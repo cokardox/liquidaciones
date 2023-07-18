@@ -1,10 +1,81 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Listar Usuarios</title>
 </head>
+<header th:include="~{../static/html/navSecundario.html}"></header>
 <body>
+
+<div class="container">
+    <h1 class="text-center mt-5">Bienvenido</h1>
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Crear Usuario</h5>
+                    <a href="/crearUsuario" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Ver y/o editar usuarios</h5>
+                    <a href="/listUsuario" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Crear Empleador</h5>
+                    <a href="/crearEmpleador" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Ver y/o editar empleador</h5>
+                    <a href="/listEmpleador" class="stretched-link"></a>                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Crear Trabajador</h5>
+                    <a href="/crearUsuario" class="stretched-link"></a>                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Ver y/o editar trabajador</h5>
+                    <a href="/crearUsuario" class="stretched-link"></a>                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Crear Liquidación</h5>
+                    <a href="/crearUsuario" class="stretched-link"></a>                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Ver y/o editar liquidación</h5>
+                    <a href="/crearUsuario" class="stretched-link"></a>                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <title>Liquidaciones</title>
+</head>
+<header th:include="~{../static/html/navSecundario.html}"></header>
+<body>
+
+
+<div class="form-list rounded">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Run</th>
+      <th>Nombre</th>
+      <th>Apellido 1</th>
+      <th>Email</th>
+      <th>Perfil</th>
+      <th>Acción</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="empleador: ${empleadores}">
+      <td th:text="${empleador.idEmpleador}"></td>
+      <td th:text="${empleador.nombre}"></td>
+      <td th:text="${empleador.run}"></td>
+      <td th:text="${empleador.apellido1}"></td>
+      <td th:text="${empleador.email}"></td>
+
+      <td>
+
+        <form th:action="@{/eliminar/{idEmpleador}(idEmpleador=${empleador.idEmpleador})}" th:method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">
+          <button type="submit" name="idEmpleador" value="${empleador.idEmpleador}" class="btn btn-danger btn-sm">
+            Eliminar
+          </button>
+        </form>
+        <form th:action="@{/{idEmpleador}/editar(idEmpleador=${empleador.idEmpleador})}" th:method="get">
+          <button type="submit" class="btn btn-primary btn-sm">
+            Editar
+          </button>
+        </form>
+
+
+
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

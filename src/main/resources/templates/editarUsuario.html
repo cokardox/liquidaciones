@@ -10,8 +10,8 @@
 <body>
 
 
-
-<div class="form-editar rounded">
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="form-editar rounded col-md-6 offset-md-3">
   <div class="form-registro form-rn col-md-6 rounded">
     <form th:action="@{/actualizar/{idUsuario}(idUsuario=${usuario.idUsuario})}" id="formEditarUsuario" method="post">
       <div class="text-center mb-3">
@@ -46,16 +46,17 @@
       <div class="form-group mb-3">
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="perfil.idPerfil" value="2" id="inlineRadio1" th:checked="${usuario.perfil.idPerfil == 2}">
-          <label class="form-check-label" for="inlineRadio1">Empleador</label>
+          <label class="form-check-label" for="inlineRadio1">Contador</label>
         </div>
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="perfil.idPerfil" value="3" id="inlineRadio2" th:checked="${usuario.perfil.idPerfil == 3}">
-          <label class="form-check-label" for="inlineRadio2">Contador</label>
+          <label class="form-check-label" for="inlineRadio2">Empleador</label>
         </div>
       </div>
       <button type="submit" class="btn btn-primary">Actualizar</button>
     </form>
   </div>
+</div>
 </div>
 
 <footer th:include="~{../static/html/footer.html}"></footer>

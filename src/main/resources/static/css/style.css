@@ -95,3 +95,14 @@ nav {
     margin-top: 10px;
 
 }
+.card {
+    height: 100px;
+}
+
+
+.card-body {
+    display: flex;
+    align-items: center; /* Centrar verticalmente el contenido */
+    justify-content: center; /* Centrar horizontalmente el contenido */
+    height: 100%; /* Ajustar la altura del contenido */
+}

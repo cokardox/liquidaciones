@@ -47,7 +47,7 @@ public class Usuario {
 
     @Column(name = "telefono")
     private long telefono;
-    @OneToMany(mappedBy = "usuario") //hace referencia al atributo tipo Usuario de la clase empleador
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL) //hace referencia al atributo tipo Usuario de la clase empleador
     private List<Empleador> empleadores;
 
 
