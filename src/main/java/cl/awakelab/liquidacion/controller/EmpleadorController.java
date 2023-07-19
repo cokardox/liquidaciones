@@ -53,17 +53,20 @@ public class EmpleadorController {
     //Eliminar Empleados
 
     @PostMapping("/eliminar/{idEmpleador}")
-    public String eliminarUsuarioPorId(@PathVariable int idEmpleador) {
+    public String eliminarEmpleadorPorId(@PathVariable int idEmpleador) {
         objEmpleadorService.eliminarEmpleador2(idEmpleador);
-        return "redirect:/empleador/listEmpleador";
+        return "redirect:/empleador";
+    }
+
+    @GetMapping("/{idEmpleador}/eliminar")
+    public String mostrarEliminarEmpleador(@PathVariable int idEmpleador, Model model) {
+        Empleador empleadorEliminar = objEmpleadorService.buscarEmpleadorporId(idEmpleador);
+        model.addAttribute("empleador", empleadorEliminar);
+        return "eliminarEmpleador";
+
+
+    }
     }
 
 
 
-
-
-
-
-
-
-}
