@@ -11,9 +11,9 @@
 
 
 
-
+<div class="container">
 <div class="form-rusuario rounded">
-    <div class="form-registro form-rn col-md-6 rounded">
+    <div class="form-registro form-rn col-md-6 rounded mx-auto">
         <form th:action="@{/usuario/crearUsuario}" id="formUsuario" method="post">
             <div class="text-center mb-3">
                 <h5>Crear Usuario</h5>
@@ -60,7 +60,7 @@
         </form>
     </div>
 </div>
-
+</div>
 <footer th:include="~{../static/html/footer.html}"></footer>
 </body>
 </html>

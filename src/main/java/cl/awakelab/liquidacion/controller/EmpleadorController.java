@@ -21,7 +21,7 @@ public class EmpleadorController {
     IUsuarioService objUsuarioService;
 
 
-    //Listar Empleados
+    //LISTAR EMPLEADOR
     @GetMapping("/listEmpleador")
     public String listarUsuarios(Model model){
         List<Empleador> listarEmpleadores = objEmpleadorService.listarEmpleadores();
@@ -29,7 +29,7 @@ public class EmpleadorController {
         return "listEmpleador";
     }
 
-    // Crear Empleados
+    // CREAR EMPLEADOR
 
     @GetMapping("/crearEmpleador")
     public String mostrarFormularioCrearEmpleador(Model model) {
@@ -50,12 +50,12 @@ public class EmpleadorController {
 
 
 
-    //Eliminar Empleados
+    //ELIMINAR EMPLEADOR
 
     @PostMapping("/eliminar/{idEmpleador}")
     public String eliminarEmpleadorPorId(@PathVariable int idEmpleador) {
         objEmpleadorService.eliminarEmpleador2(idEmpleador);
-        return "redirect:/empleador";
+        return "redirect:/empleador/listEmpleador";
     }
 
     @GetMapping("/{idEmpleador}/eliminar")
@@ -66,7 +66,47 @@ public class EmpleadorController {
 
 
     }
+
+
+
+    // ACTUALIZAR EMPLEADOR
+
+    @PostMapping("/actualizar/{idEmpleador}")
+    public String actualizarEmpleador(@PathVariable int idEmpleador, @ModelAttribute Empleador empleador, @RequestParam("usuarioId") int usuarioId) {
+    Usuario usuario = objUsuarioService.buscarUsuarioPorId(usuarioId);
+    empleador.setUsuario(usuario);
+    objEmpleadorService.actualizarEmpleador(empleador, idEmpleador);
+        return "redirect:/empleador/listEmpleador";
     }
 
+    @PostMapping("/editar/{idEmpleador}")
+    public String mostrarFormEditarEmpleador(@PathVariable int idEmpleador, Model model) {
+        model.addAttribute("empleador", objEmpleadorService.buscarEmpleadorPorId(idEmpleador));
+        List<Usuario> usuarios = objUsuarioService.listarUsuarios();
+        model.addAttribute("usuarios", usuarios);
+        return "editarEmpleador";
+
+    }
+/*
+    @GetMapping("/{idEmpleador}/editar")
+    public String mostrarFormEditarEmpleador(@PathVariable int idEmpleador, Model model) {
+        Empleador empleadorParaEditar = objEmpleadorService.buscarEmpleadorPorId(idEmpleador);
+        List<Usuario> usuarios = objUsuarioService.listarUsuarios();
+        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("empleador", empleadorParaEditar);
+        return "editarEmpleador";
+    }
+
+*/
+
+
+
+    @GetMapping("/{idEmpleador}")
+    public String buscarEmpleadorPorId(@PathVariable int idEmpleador, Model model) {
+        Empleador empleador = objEmpleadorService.buscarEmpleadorPorId(idEmpleador);
+        model.addAttribute("empleador", empleador);
+        return "redirect:/empleador";
+    }
+}
 
 

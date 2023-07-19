@@ -30,7 +30,7 @@ public class Empleadorimpl implements IEmpleadorService {
 
     @Override
     public Empleador actualizarEmpleador(Empleador empleadorActualizar, int idEmpleador) {
-        Empleador empleador = objEmpleadorRepo.findById(idEmpleador).orElseThrow(() -> new NoSuchElementException("Usuario no encontrado"));
+        Empleador empleador = objEmpleadorRepo.findById(idEmpleador).orElseThrow(() -> new NoSuchElementException("Empleador no encontrado"));
         empleador.setRun(empleadorActualizar.getRun());
         empleador.setNombre(empleadorActualizar.getNombre());
         empleador.setApellido1(empleadorActualizar.getApellido1());
@@ -38,6 +38,8 @@ public class Empleadorimpl implements IEmpleadorService {
         empleador.setDireccion(empleadorActualizar.getDireccion());
         empleador.setEmail(empleadorActualizar.getEmail());
         empleador.setTelefono(empleadorActualizar.getTelefono());
+        empleador.setUsuario(empleadorActualizar.getUsuario());
+        empleador.setTrabajadores(empleadorActualizar.getTrabajadores());
         return objEmpleadorRepo.save(empleador);
     }
 

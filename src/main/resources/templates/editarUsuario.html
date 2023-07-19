@@ -13,7 +13,7 @@
 <div class="container d-flex justify-content-center align-items-center">
   <div class="form-editar rounded col-md-6 offset-md-3">
   <div class="form-registro form-rn col-md-6 rounded">
-    <form th:action="@{/usuario/actualizar/{idUsuario}(idUsuario=${usuario.idUsuario})}" id="formEditarUsuario" method="post">
+    <form th:action="@{/empleador/actualizar/{idEmpleador}(idEmpleador=${empleador.getIdEmpleador()})}" id="contactForm" th:method="post">
       <div class="text-center mb-3">
         <h5>Editar Usuario</h5>
       </div>
@@ -21,27 +21,27 @@
       <input type="hidden" name="idUsuario" th:value="${usuario.idUsuario}">
       <div class="mb-3">
         <label for="run" class="form-label">RUN</label>
-        <input type="number" class="form-control" id="run" name="run" th:value="${usuario.run}">
+        <input type="number" class="form-control" id="run" name="run" th:value="${empleador.run}">
       </div>
       <div class="mb-3">
         <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre" name="nombre" th:value="${usuario.nombre}">
+        <input type="text" class="form-control" id="nombre" name="nombre" th:value="${empleador.nombre}">
       </div>
       <div class="mb-3">
         <label for="apellido1" class="form-label">Apellido 1</label>
-        <input type="text" class="form-control" id="apellido1" name="apellido1" th:value="${usuario.apellido1}">
+        <input type="text" class="form-control" id="apellido1" name="apellido1" th:value="${empleador.apellido1}">
       </div>
       <div class="mb-3">
         <label for="apellido2" class="form-label">Apellido 2 (opcional)</label>
-        <input type="text" class="form-control" id="apellido2" name="apellido2" th:value="${usuario.apellido2}">
+        <input type="text" class="form-control" id="apellido2" name="apellido2" th:value="${empleador.apellido2}">
       </div>
       <div class="mb-3">
         <label for="telefono" class="form-label">Teléfono</label>
-        <input type="number" class="form-control" id="telefono" name="telefono" th:value="${usuario.telefono}">
+        <input type="number" class="form-control" id="telefono" name="telefono" th:value="${empleador.telefono}">
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" th:value="${usuario.email}">
+        <input type="email" class="form-control" id="email" name="email" th:value="${empleador.email}">
       </div>
       <div class="form-group mb-3">
         <div class="form-check form-check-inline">

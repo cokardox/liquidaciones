@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Listar Usuarios</title>
+</head>
+<header th:include="~{../static/html/navSecundario.html}"></header>
+<body>
+
+
+
+<div class="container">
+    <div class="form-rusuario rounded">
+        <div class="form-registro form-rn col-md-6 rounded mx-auto">
+            <form th:action="@{/trabajador/crearTrabajador}" id="formTrabajador" method="post">
+                <div class="text-center mb-3">
+                    <h5>Crear Trabajador</h5>
+                </div>
+                <div class="mb-3">
+                    <label for="run" class="form-label">RUN</label>
+                    <input type="number" class="form-control" id="run" name="run">
+                </div>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="apellido1" class="form-label">Apellido 1</label>
+                    <input type="text" class="form-control" id="apellido1" name="apellido1">
+                </div>
+                <div class="mb-3">
+                    <label for="apellido2" class="form-label">Apellido 2 (opcional)</label>
+                    <input type="text" class="form-control" id="apellido2" name="apellido2">
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input type="number" class="form-control" id="telefono" name="telefono">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="direccion" class="form-label">Direccion</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion">
+                </div>
+                <div class="mt-4 mb-3">
+                    <label for="previsionId" class="form-label">AFP</label>
+                    <select class="form-control" id="previsionId" name="previsionId">
+                        <option th:each="prevision: ${prevision}" th:value="${prevision.idInstPrevision}" th:text="${prevision.descripcion}"></option>
+                    </select>
+                </div>
+                <div class="mt-4 mb-3">
+                    <label for="saludId" class="form-label">Institución de Salud</label>
+                    <select class="form-control" id="saludId" name="saludId">
+                        <option th:each="salud: ${salud}" th:value="${salud.idInstSalud}" th:text="${salud.descripcion}"></option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Agregar Trabajador</button>
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:include="~{../static/html/footer.html}"></footer>
+</body>
+</html>

@@ -10,9 +10,14 @@
 <body>
 
 
-<div class="form-list rounded">
-    <table class="table">
-        <thead>
+<div class="container mt-3">
+    <div class="d-flex justify-content-between align-items-center mb-3 mb-3">
+
+        <a href="/usuario/crearUsuario" class="btn btn-primary">Agregar Usuario</a>
+    </div>
+    <div class="form-list rounded">
+        <table class="table">
+            <thead>
             <tr>
                 <th>ID</th>
                 <th>Run</th>
@@ -22,8 +27,8 @@
                 <th>Perfil</th>
                 <th>Acción</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             <tr th:each="usuario: ${usuarios}">
                 <td th:text="${usuario.idUsuario}"></td>
                 <td th:text="${usuario.run}"></td>
@@ -32,7 +37,6 @@
                 <td th:text="${usuario.email}"></td>
                 <td th:text="${usuario.perfil.descripcion}"></td>
                 <td>
-
                     <form th:action="@{/usuario/eliminar/{idUsuario}(idUsuario=${usuario.idUsuario})}" th:method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">
                         <button type="submit" name="idUsuario" value="${usuario.idUsuario}" class="btn btn-danger btn-sm">
                             Eliminar
@@ -43,14 +47,11 @@
                             Editar
                         </button>
                     </form>
-
-
-
                 </td>
-
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>
