@@ -33,12 +33,12 @@
                 <td th:text="${usuario.perfil.descripcion}"></td>
                 <td>
 
-                    <form th:action="@{/eliminar/{idUsuario}(idUsuario=${usuario.idUsuario})}" th:method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">
+                    <form th:action="@{/usuario/eliminar/{idUsuario}(idUsuario=${usuario.idUsuario})}" th:method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">
                         <button type="submit" name="idUsuario" value="${usuario.idUsuario}" class="btn btn-danger btn-sm">
                             Eliminar
                         </button>
                     </form>
-                    <form th:action="@{/{idUsuario}/editar(idUsuario=${usuario.idUsuario})}" th:method="get">
+                    <form th:action="@{/usuario/{idUsuario}/editar(idUsuario=${usuario.idUsuario})}" th:method="get">
                         <button type="submit" class="btn btn-primary btn-sm">
                             Editar
                         </button>

@@ -26,11 +26,10 @@
     <tbody>
     <tr th:each="empleador: ${empleadores}">
       <td th:text="${empleador.idEmpleador}"></td>
-      <td th:text="${empleador.nombre}"></td>
       <td th:text="${empleador.run}"></td>
+      <td th:text="${empleador.nombre}"></td>
       <td th:text="${empleador.apellido1}"></td>
       <td th:text="${empleador.email}"></td>
-
       <td>
 
         <form th:action="@{/eliminar/{idEmpleador}(idEmpleador=${empleador.idEmpleador})}" th:method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">

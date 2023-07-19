@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+@RequestMapping("/empleador")
 @Controller
 public class EmpleadorController {
     @Autowired
@@ -45,7 +45,7 @@ public class EmpleadorController {
         Usuario usuario = objUsuarioService.buscarUsuarioPorId(usuarioId);
         empleador.setUsuario(usuario);
         objEmpleadorService.crearEmpleador(empleador);
-        return "redirect:/listEmpleador";
+        return "redirect:/empleador/listEmpleador";
     }
 
 
@@ -55,7 +55,7 @@ public class EmpleadorController {
     @PostMapping("/eliminar/{idEmpleador}")
     public String eliminarUsuarioPorId(@PathVariable int idEmpleador) {
         objEmpleadorService.eliminarEmpleador2(idEmpleador);
-        return "redirect:/listEmpleador";
+        return "redirect:/empleador/listEmpleador";
     }
 
 

@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
-
+@RequestMapping("/usuario")
 @Controller
-
 public class UsuarioController {
     @Autowired
     IUsuarioService objUsuarioService;
@@ -75,7 +74,9 @@ public class UsuarioController {
     }
 */
    //Crear usuario
-   @GetMapping("/crearUsuario")
+
+    @GetMapping("/crearUsuario")
+
    public String mostrarFormularioCrearUsuario(Model model){
        return "formUsuario";
    }
@@ -84,7 +85,7 @@ public class UsuarioController {
     public String crearUsuario(@ModelAttribute Usuario usuario){
         usuario.setFechaCreacion(LocalDateTime.now());
         objUsuarioService.crearUsuario(usuario);
-        return "redirect:/listUsuario";
+        return "redirect:/usuario/listUsuario";
     }
 
     @PostMapping("/registrarse")
@@ -99,7 +100,7 @@ public class UsuarioController {
     public String listarUsuarios(Model model){
         List<Usuario> listaUsuarios = objUsuarioService.listarUsuarios();
         model.addAttribute("usuarios", listaUsuarios);
-        return "listUsuario";
+        return "/listUsuario";
     }
 
   /*  @GetMapping("/{idUsuario}/eliminar")
@@ -111,7 +112,7 @@ public class UsuarioController {
     @PostMapping("/eliminar/{idUsuario}")
     public String eliminarUsuarioPorId(@PathVariable int idUsuario) {
         objUsuarioService.eliminarUsuario2(idUsuario);
-        return "redirect:/listUsuario";
+        return "redirect:/usuario/listUsuario";
     }
 
 
@@ -130,7 +131,7 @@ public class UsuarioController {
     @PostMapping("/actualizar/{idUsuario}")
     public String actualizarUsuario(@PathVariable int idUsuario, @ModelAttribute Usuario usuario) {
         objUsuarioService.actualizarUsuario(usuario, idUsuario);
-        return "redirect:/listUsuario";
+        return "redirect:/usuario/listUsuario";
     }
     @GetMapping("/{idUsuario}/editar")
     public String mostrarFormularioEditarUsuario(@PathVariable int idUsuario, Model model) {
