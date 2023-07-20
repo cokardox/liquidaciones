@@ -37,8 +37,4 @@ public class Trabajadorimpl implements ITrabajadorService {
 
 
 
-    @Override
-    public Trabajador buscarTrabajadorporId(int idTrabajador) {
-        return null;
-    }
 }

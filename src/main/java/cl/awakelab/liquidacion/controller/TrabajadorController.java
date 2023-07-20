@@ -42,7 +42,7 @@ public class TrabajadorController {
 
     @GetMapping("/{idTrabajador}/eliminar")
     public String mostrarEliminarTrabajador(@PathVariable int idTrabajador, Model model) {
-        Trabajador trabajadorEliminar = objTrabajadorService.buscarTrabajadorporId(idTrabajador);
+        Trabajador trabajadorEliminar = objTrabajadorService.buscarTrabajadorPorId(idTrabajador);
         model.addAttribute("empleador", trabajadorEliminar);
         return "eliminarTrabajador";
 
