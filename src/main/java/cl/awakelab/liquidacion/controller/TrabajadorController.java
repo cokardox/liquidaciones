@@ -54,26 +54,35 @@ public class TrabajadorController {
     @GetMapping("/crearTrabajador")
     public String mostrarFormularioCrearTrabajador(Model model) {
         List<Empleador> empleadores = objEmpleadorService.listarEmpleadores();
-        model.addAttribute("empleadores", empleadores);
-        model.addAttribute("trabajador", new Trabajador());
-        return "formTrabajador";
-    }
+        List<InstitucionPrevision> previsiones = objPrevisionService.listarInstitucionPrevision();
+        List<InstitucionSalud> salud = objSaludService.listarInstitucionSalud();
 
-    @PostMapping("/actualizar/{idTrabajador}")
-    public String actualizarTrabajador(@ModelAttribute Trabajador trabajador, @PathVariable int idTrabajador,
-                                       @RequestParam("previsionId") int previsionId,
-                                       @RequestParam("saludId") int saludId){
-        InstitucionPrevision prevision = objPrevisionService.buscarPrevisionPorId(previsionId);
-        InstitucionSalud salud = objSaludService.buscarSaludPorId(saludId);
-        trabajador.setInstPrevision(prevision);
-        trabajador.setInstSalud(salud);
-        objTrabajadorService.actualizarTrabajador(trabajador, idTrabajador);
-        return "redirect:/trabajador";
+        model.addAttribute("empleadores", empleadores);
+        model.addAttribute("previsiones", previsiones);
+        model.addAttribute("salud", salud);
+        model.addAttribute("trabajador", new Trabajador());
+
+        return "formTrabajador";
     }
 
 
 
     // ACTUALIZAR TRABAJADOR
+
+    @PostMapping("/actualizar/{idTrabajador}")
+    public String actualizarTrabajador(@ModelAttribute Trabajador trabajador, @PathVariable int idTrabajador,
+                                       @RequestParam("previsionId") int previsionId,
+                                       @RequestParam("saludId") int saludId) {
+        InstitucionPrevision prevision = objPrevisionService.buscarPrevisionPorId(previsionId);
+        InstitucionSalud salud = objSaludService.buscarSaludPorId(saludId);
+
+        trabajador.setInstitucionPrevision(prevision);
+        trabajador.setInstitucionSalud(salud);
+
+        objTrabajadorService.actualizarTrabajador(trabajador, idTrabajador);
+
+        return "redirect:/trabajador";
+    }
 
 
 }

@@ -47,15 +47,17 @@
                     <input type="text" class="form-control" id="direccion" name="direccion">
                 </div>
                 <div class="mt-4 mb-3">
-                    <label for="previsionId" class="form-label">AFP</label>
-                    <select class="form-control" id="previsionId" name="previsionId">
-                        <option th:each="prevision: ${prevision}" th:value="${prevision.idInstPrevision}" th:text="${prevision.descripcion}"></option>
+                    <label for="institucionPrevision" class="form-label">AFP</label>
+                    <select class="form-control" id="institucionPrevision" name="institucionPrevision">
+                        <option th:each="prevision : ${previsiones}" th:value="${prevision.idInstPrevision}" th:text="${prevision.descripcion}"></option>
                     </select>
                 </div>
+
+                <!-- Select para salud -->
                 <div class="mt-4 mb-3">
-                    <label for="saludId" class="form-label">Institución de Salud</label>
-                    <select class="form-control" id="saludId" name="saludId">
-                        <option th:each="salud: ${salud}" th:value="${salud.idInstSalud}" th:text="${salud.descripcion}"></option>
+                    <label for="institucionSalud" class="form-label">Institución de Salud</label>
+                    <select class="form-control" id="institucionSalud" name="institucionSalud">
+                        <option th:each="salud : ${salud}" th:value="${salud.idInstSalud}" th:text="${salud.descripcion}"></option>
                     </select>
                 </div>
 
