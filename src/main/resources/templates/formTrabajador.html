@@ -46,17 +46,24 @@
                     <label for="direccion" class="form-label">Direccion</label>
                     <input type="text" class="form-control" id="direccion" name="direccion">
                 </div>
+
                 <div class="mt-4 mb-3">
-                    <label for="institucionPrevision" class="form-label">AFP</label>
-                    <select class="form-control" id="institucionPrevision" name="institucionPrevision">
+                    <label for="empleadorId" class="form-label">Empleador</label>
+                    <select class="form-control" id="empleadorId" name="empleadorId">
+                        <option th:each="empleador : ${empleadores}" th:value="${empleador.idEmpleador}" th:text="${empleador.nombre}"></option>
+                    </select>
+                </div>
+
+                <div class="mt-4 mb-3">
+                    <label for="idInstPrevision" class="form-label">AFP</label>
+                    <select class="form-control" id="idInstPrevision" name="idInstPrevision">
                         <option th:each="prevision : ${previsiones}" th:value="${prevision.idInstPrevision}" th:text="${prevision.descripcion}"></option>
                     </select>
                 </div>
 
-                <!-- Select para salud -->
                 <div class="mt-4 mb-3">
-                    <label for="institucionSalud" class="form-label">Institución de Salud</label>
-                    <select class="form-control" id="institucionSalud" name="institucionSalud">
+                    <label for="idInstSalud" class="form-label">Institución de Salud</label>
+                    <select class="form-control" id="idInstSalud" name="idInstSalud">
                         <option th:each="salud : ${salud}" th:value="${salud.idInstSalud}" th:text="${salud.descripcion}"></option>
                     </select>
                 </div>

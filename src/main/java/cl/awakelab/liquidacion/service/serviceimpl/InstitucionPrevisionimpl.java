@@ -1,16 +1,22 @@
 package cl.awakelab.liquidacion.service.serviceimpl;
 
+import cl.awakelab.liquidacion.entity.Empleador;
 import cl.awakelab.liquidacion.entity.InstitucionPrevision;
+import cl.awakelab.liquidacion.repository.IEmpleadorRepository;
+import cl.awakelab.liquidacion.repository.IInstitucionPrevisionRepository;
 import cl.awakelab.liquidacion.service.IInstitucionPrevisionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service("InstitucionPrevisionimpl")
 public class InstitucionPrevisionimpl implements IInstitucionPrevisionService {
+    @Autowired
+    IInstitucionPrevisionRepository objInstitucionPrevisionRepository;
     @Override
     public List<InstitucionPrevision> listarInstitucionPrevision() {
-        return null;
+        return objInstitucionPrevisionRepository.findAll();
     }
 
     @Override
@@ -18,3 +24,4 @@ public class InstitucionPrevisionimpl implements IInstitucionPrevisionService {
         return null;
     }
 }
+

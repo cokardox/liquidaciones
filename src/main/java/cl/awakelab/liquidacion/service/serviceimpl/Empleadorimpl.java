@@ -44,24 +44,11 @@ public class Empleadorimpl implements IEmpleadorService {
     }
 
     @Override
-    public void eliminarEmpleador(Empleador empleador) {
-
-    }
-    @Override
     public void eliminarEmpleador2(int idEmpleador) {
         objEmpleadorRepo.deleteById(idEmpleador);
     }
 
-    @Override
-    public void eliminarEmpleador(int idEmpleador) {
 
-        objEmpleadorRepo.deleteById(idEmpleador);
-    }
-
-    @Override
-    public Empleador buscarEmpleadorporId(int idEmpleador) {
-        return objEmpleadorRepo.findById(idEmpleador).orElseThrow(() -> new NoSuchElementException("Empleador no encontrado"));
-    }
 }
 
 

@@ -14,6 +14,7 @@ public interface ITrabajadorService {
     Trabajador buscarTrabajadorPorId(int idTrabajador);
 
     Trabajador crearTrabajador(Trabajador trabajador);
+
 }
 
 

@@ -9,12 +9,6 @@ public interface IEmpleadorService {
     Empleador crearEmpleador(Empleador empleador);
     Empleador buscarEmpleadorPorId(int idEmpleador);
     Empleador actualizarEmpleador(Empleador empleador, int idEmpleador);
-    public void eliminarEmpleador(Empleador empleador);
     public void eliminarEmpleador2(int idEmpleador);
 
-
-
-    public void eliminarEmpleador(int idEmpleador);
-
-    Empleador buscarEmpleadorporId(int idUsuario);
 }

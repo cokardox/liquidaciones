@@ -14,14 +14,14 @@
 <div class="container">
   <div class="form-rusuario rounded">
     <div class="form-registro form-rn col-md-6 rounded mx-auto">
-      <form th:action="@{/empleador/actualizar/{idEmpleador}(idEmpleador=${empleador.idEmpleador})}" id="contactForm" th:method="post">
+      <form th:action="@{/empleador/actualizar/{idEmpleador}(idEmpleador=${empleador.getIdEmpleador()})}" id="contactForm" th:method="post">
 
       <div class="text-center mb-3">
           <h5>Crear Empleador</h5>
         </div>
         <div class="mb-3">
           <label for="run" class="form-label">RUN</label>
-          <input type="number" class="form-control" id="run" name="run">
+          <input type="number" class="form-control" id="run" name="run" value="${empleador.run}">
         </div>
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre</label>
@@ -44,7 +44,7 @@
           <input type="email" class="form-control" id="email" name="email">
         </div>
         <div class="mb-3">
-          <label for="usuarioId" class="form-label">Usuario Asignado</label>
+          <label for="usuarioId" class="form-label">Seleccionar Usuario</label>
           <select class="form-control" id="usuarioId" name="usuarioId">
 
             <option th:each="usuario: ${usuarios}"

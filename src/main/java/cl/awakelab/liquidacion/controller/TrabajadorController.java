@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RequestMapping("/trabajador")
@@ -50,7 +51,6 @@ public class TrabajadorController {
     }
 
     // CREAR TRABAJADOR
-
     @GetMapping("/crearTrabajador")
     public String mostrarFormularioCrearTrabajador(Model model) {
         List<Empleador> empleadores = objEmpleadorService.listarEmpleadores();
@@ -58,12 +58,36 @@ public class TrabajadorController {
         List<InstitucionSalud> salud = objSaludService.listarInstitucionSalud();
 
         model.addAttribute("empleadores", empleadores);
-        model.addAttribute("previsiones", previsiones);
-        model.addAttribute("salud", salud);
+        model.addAttribute("idInstPrevision", previsiones); // Cambiar "previsiones" a "idInstPrevision"
+        model.addAttribute("idInstSalud", salud); // Cambiar "salud" a "idInstSalud"
         model.addAttribute("trabajador", new Trabajador());
 
         return "formTrabajador";
     }
+
+    @PostMapping("/crearTrabajador")
+    public String crearTrabajador(@ModelAttribute Trabajador trabajador,
+                                  @RequestParam("empleadorId") int idEmpleador,
+                                  @RequestParam("idInstPrevision") int idInstPrevision,
+                                  @RequestParam("idInstSalud") int idInstSalud) {
+
+        Empleador empleador = objEmpleadorService.buscarEmpleadorPorId(idEmpleador);
+        InstitucionPrevision prevision = objPrevisionService.buscarPrevisionPorId(idInstPrevision);
+        InstitucionSalud salud = objSaludService.buscarSaludPorId(idInstSalud);
+
+        trabajador.setListaEmpleadores(Collections.singletonList(empleador));
+        trabajador.setInstitucionPrevision(prevision);
+        trabajador.setInstitucionSalud(salud);
+
+        objTrabajadorService.crearTrabajador(trabajador);
+
+        return "redirect:/trabajador/listTrabajador";
+    }
+
+
+
+
+
 
 
 
@@ -71,10 +95,10 @@ public class TrabajadorController {
 
     @PostMapping("/actualizar/{idTrabajador}")
     public String actualizarTrabajador(@ModelAttribute Trabajador trabajador, @PathVariable int idTrabajador,
-                                       @RequestParam("previsionId") int previsionId,
-                                       @RequestParam("saludId") int saludId) {
-        InstitucionPrevision prevision = objPrevisionService.buscarPrevisionPorId(previsionId);
-        InstitucionSalud salud = objSaludService.buscarSaludPorId(saludId);
+                                       @RequestParam("idInstPrevision") int idInstPrevision,
+                                       @RequestParam("idInstSalud") int idInstSalud) {
+        InstitucionPrevision prevision = objPrevisionService.buscarPrevisionPorId(idInstPrevision);
+        InstitucionSalud salud = objSaludService.buscarSaludPorId(idInstSalud);
 
         trabajador.setInstitucionPrevision(prevision);
         trabajador.setInstitucionSalud(salud);
@@ -83,6 +107,19 @@ public class TrabajadorController {
 
         return "redirect:/trabajador";
     }
+    @GetMapping("/{idTrabajador}/editar")
+    public String mostrarFormularioEditarTrabajador(@PathVariable int idTrabajador, Model model) {
+        Trabajador trabajadorEditar = objTrabajadorService.buscarTrabajadorPorId(idTrabajador);
+        List<Empleador> empleadores = objEmpleadorService.listarEmpleadores();
+        List<InstitucionPrevision> previsiones = objPrevisionService.listarInstitucionPrevision();
+        List<InstitucionSalud> salud = objSaludService.listarInstitucionSalud();
 
+        model.addAttribute("empleadores", empleadores);
+        model.addAttribute("previsiones", previsiones);
+        model.addAttribute("salud", salud);
+        model.addAttribute("trabajador", trabajadorEditar);
+
+        return "editarTrabajador";
+    }
 
 }
