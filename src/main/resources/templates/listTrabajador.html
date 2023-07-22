@@ -41,7 +41,7 @@
             </button>
           </form>
 
-          <form th:action="@{/trabajador/editar/{idTrabajador}/editar(idTrabajador=${trabajador.idTrabajador})}" th:method="get">
+          <form th:action="@{/trabajador/editar/{idTrabajador}(idTrabajador=${trabajador.idTrabajador})}" th:method="get">
             <button type="submit" class="btn btn-primary btn-sm">
               Editar
             </button>

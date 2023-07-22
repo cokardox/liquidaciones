@@ -24,7 +24,7 @@ public class InstitucionPrevision {
 
 
     @OneToMany(mappedBy = "institucionPrevision")
-    List<Trabajador> Trabajadores;
+    List<Trabajador> listaTrabajadores;
 
     @OneToMany(mappedBy = "institucionPrevisional")
     List<Liquidacion> liquidacionesPrev;

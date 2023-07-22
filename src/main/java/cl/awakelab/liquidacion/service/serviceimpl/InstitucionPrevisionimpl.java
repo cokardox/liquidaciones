@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service("InstitucionPrevisionimpl")
 public class InstitucionPrevisionimpl implements IInstitucionPrevisionService {
@@ -21,7 +22,6 @@ public class InstitucionPrevisionimpl implements IInstitucionPrevisionService {
 
     @Override
     public InstitucionPrevision buscarPrevisionPorId(int idInstPrevision) {
-        return null;
+        return objInstitucionPrevisionRepository.findById(idInstPrevision).orElseThrow(()->new NoSuchElementException("prevision no encontrada"));
     }
 }
-

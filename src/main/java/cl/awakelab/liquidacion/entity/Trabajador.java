@@ -40,7 +40,12 @@ public class Trabajador {
     @OneToMany
     List<Liquidacion> listaTrabajadores;
 
-    @ManyToMany(mappedBy = "trabajadores")
+
+
+    @ManyToMany
+    @JoinTable(name = "empl_trab",
+            joinColumns = @JoinColumn(name = "id_trabajador", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "id_empleador", nullable = false))
     private List<Empleador> listaEmpleadores;
 
 }

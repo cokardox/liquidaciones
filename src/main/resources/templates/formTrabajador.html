@@ -55,18 +55,20 @@
                 </div>
 
                 <div class="mt-4 mb-3">
-                    <label for="idInstPrevision" class="form-label">AFP</label>
-                    <select class="form-control" id="idInstPrevision" name="idInstPrevision">
+                    <label for="idPrevision" class="form-label">AFP</label>
+                    <select class="form-control" id="idPrevision" name="idPrevision">
                         <option th:each="prevision : ${previsiones}" th:value="${prevision.idInstPrevision}" th:text="${prevision.descripcion}"></option>
                     </select>
                 </div>
 
+
                 <div class="mt-4 mb-3">
-                    <label for="idInstSalud" class="form-label">Institución de Salud</label>
-                    <select class="form-control" id="idInstSalud" name="idInstSalud">
+                    <label for="idSalud" class="form-label">Previsión</label>
+                    <select class="form-control" id="idSalud" name="idSalud">
                         <option th:each="salud : ${salud}" th:value="${salud.idInstSalud}" th:text="${salud.descripcion}"></option>
                     </select>
                 </div>
+
 
                 <button type="submit" class="btn btn-primary">Agregar Trabajador</button>
             </form>

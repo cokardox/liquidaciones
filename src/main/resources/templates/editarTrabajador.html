@@ -12,56 +12,71 @@
 <div class="container">
     <div class="form-rusuario rounded">
         <div class="form-registro form-rn col-md-6 rounded mx-auto">
-            <form th:action="@{/trabajador/actualizar/{idTrabajador}(idTrabajador=${trabajador.idTrabajador})}" id="contactForm" th:method="post">
+            <form th:action="@{/trabajador/actualizar/{idTrabajador}(idTrabajador=${trabajador.idTrabajador})}" id="contactForm" th:object="${trabajador}" th:method="post">
 
                 <div class="text-center mb-3">
                     <h5>Editar Trabajador</h5>
                 </div>
                 <div class="mb-3">
                     <label for="run" class="form-label">RUN</label>
-                    <input type="number" class="form-control" id="run" name="run" th:value="${trabajador.run}">
+                    <input type="number" class="form-control" id="run" name="run" th:field="*{run}">
                 </div>
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" th:value="${trabajador.nombre}">
+                    <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}">
                 </div>
                 <div class="mb-3">
                     <label for="apellido1" class="form-label">Apellido 1</label>
-                    <input type="text" class="form-control" id="apellido1" name="apellido1" th:value="${trabajador.apellido1}">
+                    <input type="text" class="form-control" id="apellido1" name="apellido1" th:field="*{apellido1}">
                 </div>
                 <div class="mb-3">
                     <label for="apellido2" class="form-label">Apellido 2 (opcional)</label>
-                    <input type="text" class="form-control" id="apellido2" name="apellido2" th:value="${trabajador.apellido2}">
+                    <input type="text" class="form-control" id="apellido2" name="apellido2" th:field="*{apellido2}">
                 </div>
                 <div class="mb-3">
                     <label for="telefono" class="form-label">Teléfono</label>
-                    <input type="number" class="form-control" id="telefono" name="telefono" th:value="${trabajador.telefono}">
+                    <input type="number" class="form-control" id="telefono" name="telefono" th:field="*{telefono}">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" th:value="${trabajador.email}">
+                    <input type="email" class="form-control" id="email" name="email" th:field="*{email}">
                 </div>
+             <!--   <div class="mb-3">
+                    <label for="empleadorId" class="form-label">Empleador</label>
+                    <select class="form-control" id="empleadorId" name="empleadorId" th:field="*{listaEmpleadores[0].idEmpleador}">
+                        <option th:each="empleador : ${empleadores}"
+                                th:value="${empleador.idEmpleador}"
+                                th:text="${empleador.nombre}"
+                                th:selected="${empleador.idEmpleador == trabajador.listaEmpleadores[0].idEmpleador}">
+
+
+                        </option>
+                    </select>
+
+                </div>   -->
                 <div class="mb-3">
-                    <label for="institucionPrevision" class="form-label">AFP</label>
-                    <select class="form-control" id="institucionPrevision" name="previsionId">
+                    <label for="idPrevision" class="form-label">AFP</label>
+                    <select class="form-control" id="idPrevision" name="idPrevision">
                         <option th:each="prevision : ${previsiones}"
                                 th:value="${prevision.idInstPrevision}"
                                 th:text="${prevision.descripcion}"
                                 th:selected="${prevision.idInstPrevision == trabajador.institucionPrevision.idInstPrevision}">
+
                         </option>
                     </select>
+
                 </div>
 
                 <!-- Select para salud -->
                 <div class="mb-3">
-                    <label for="institucionSalud" class="form-label">Institución de Salud</label>
-                    <select class="form-control" id="institucionSalud" name="saludId">
+                    <label for="idSalud" class="form-label">Institución de Salud</label>
+                    <select class="form-control" id="idSalud" name="idSalud">
                         <option th:each="salud : ${salud}"
                                 th:value="${salud.idInstSalud}"
                                 th:text="${salud.descripcion}"
-                                th:selected="${salud.idInstSalud == trabajador.institucionSalud.idInstSalud}">
-                        </option>
+                                th:selected="${salud.idInstSalud == trabajador.institucionSalud.idInstSalud}"></option>
                     </select>
+
                 </div>
 
                 <button type="submit" class="btn btn-primary">Guardar Cambios</button>
