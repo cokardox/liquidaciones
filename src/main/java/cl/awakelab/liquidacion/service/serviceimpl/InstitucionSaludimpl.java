@@ -14,6 +14,7 @@ public class InstitucionSaludimpl implements IInstitucionSaludService {
     IInstitucionSaludRepository objIsaludRepo;
     @Override
     public List<InstitucionSalud> listarInstitucionSalud() {
+
         return objIsaludRepo.findAll();
     }
 

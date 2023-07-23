@@ -87,7 +87,7 @@ public class TrabajadorController {
     }
 
 
-    // ACTUALIZAR TRABAJADOR oscar
+    // ACTUALIZAR TRABAJADOR
 
 
 
@@ -169,41 +169,4 @@ public class TrabajadorController {
         return "editarTrabajador";
     }
 
-
-
-
-
-
-    //ACTUALIZAR TRABAJADOR CINTIA
-
-/*
-    @GetMapping("/{idTrabajador}")
-    public String buscarTrabajadorPorId(@PathVariable int idTrabajador, Model model){
-        Trabajador trabajador = objTrabajadorService.buscarTrabajadorPorId(idTrabajador);
-        model.addAttribute("trabajador", trabajador);
-        return "redirect:/trabajador";
-    }
-
-    @GetMapping("/editar/{idTrabajador}")
-    public String mostrarFormTrabajador(@PathVariable int idTrabajador, Model model){
-        model.addAttribute("trabajador", objTrabajadorService.buscarTrabajadorPorId(idTrabajador));
-        List<InstitucionPrevision> prevision = objPrevisionService.listarInstitucionPrevision();
-        List<InstitucionSalud> salud = objSaludService.listarInstitucionSalud();
-        model.addAttribute("prevision", prevision);
-        model.addAttribute("salud", salud);
-        return "editarTrabajador";
-    }
-
-    @PostMapping("/actualizar/{idTrabajador}")
-    public String actualizarTrabajador(@ModelAttribute Trabajador trabajador, @PathVariable int idTrabajador,
-                                       @RequestParam("IdPrevision") int previsionId,
-                                       @RequestParam("IdSalud") int saludId){
-        InstitucionPrevision prevision = objPrevisionService.buscarPrevisionPorId(previsionId);
-        InstitucionSalud salud = objSaludService.buscarSaludPorId(saludId);
-        trabajador.setInstitucionPrevision(prevision);
-        trabajador.setInstitucionSalud(salud);
-        objTrabajadorService.actualizarTrabajador(trabajador, idTrabajador);
-        return "redirect:/trabajador";
-    }
-*/
 }
