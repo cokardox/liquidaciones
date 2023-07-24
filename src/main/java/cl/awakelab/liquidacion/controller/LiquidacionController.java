@@ -50,7 +50,7 @@ public class LiquidacionController {
     @PostMapping("/eliminar/{idLiquidacion}")
     public String eliminarLiquidacionPorId(@PathVariable long idLiquidacion) {
         objLiquidacionService.eliminarLiquidacion(idLiquidacion);
-        return "redirect:/liquidacion/listLiquiacion";
+        return "redirect:/liquidacion/listLiquidacion";
     }
 
 

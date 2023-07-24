@@ -36,11 +36,31 @@
         <td th:text="${liquidacion.sueldoLiquido}"></td>
         <td>
 
+    <!--      <form th:action="@{/liquidacion/eliminar/{idLiquidacion}(idTrabajador=${liquidacion.trabajador.idTrabajador})}" th:method="post" onsubmit="return confirm('¿Eliminar esta liquidación?')">
+            <button type="submit" name="idLiquidacion" value="${liquidacion.idLiquidacion}" class="btn btn-danger btn-sm">
+              Eliminar
+            </button>
+          </form>
+-->
+
+          <!--
           <form th:action="@{/liquidacion/eliminar/{idLiquidacion}(idTrabajador=${liquidacion.trabajador.idTrabajador})}" th:method="post" onsubmit="return confirm('¿Eliminar esta liquidación?')">
             <button type="submit" name="idTrabajador" value="${liquidacion.trabajador.idTrabajador}" class="btn btn-danger btn-sm">
               Eliminar
             </button>
           </form>
+           -->
+          <!-- ... -->
+          <form th:action="@{/liquidacion/eliminar/{idLiquidacion}(idLiquidacion=${liquidacion.idLiquidacion},idTrabajador=${liquidacion.trabajador.idTrabajador})}" th:method="post" onsubmit="return confirm('¿Eliminar esta liquidación?')">
+            <button type="submit" class="btn btn-danger btn-sm">
+              Eliminar
+            </button>
+          </form>
+
+          <!-- ... -->
+
+
+
 
           <form th:action="@{/liquidacion/editar/{idLiquidacion}(idTrabajador=${liquidacion.trabajador.idTrabajador})}" th:method="get">
             <button type="submit" class="btn btn-primary btn-sm">
