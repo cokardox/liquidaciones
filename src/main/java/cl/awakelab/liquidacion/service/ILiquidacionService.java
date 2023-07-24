@@ -15,6 +15,8 @@ public interface ILiquidacionService {
 
     Liquidacion crearLiquidacion(Liquidacion liquidacion);
 
+    Liquidacion calcularSueldo(Liquidacion liquidacion);
+
 
 
 }

@@ -70,19 +70,28 @@ public class LiquidacionController {
         return "formLiquidacion";
     }
 
-    @PostMapping("/crearLiquidacionr")
+    @PostMapping("/crearLiquidacion")
     public String crearLiquidacion(@ModelAttribute Liquidacion liquidacion,
-                                  @RequestParam("TrabajadorId") int idTrabajador,
+                                  @RequestParam("trabajadorId") int idTrabajador,
                                   @RequestParam("idPrevision") int idInstPrevision,
-                                  @RequestParam("idSalud") int idInstSalud) {
+                                  @RequestParam("idSalud") int idInstSalud,
+                                    @RequestParam("imponibleId") int imponibleId){
 
         Trabajador trabajador = objTrabajadorService.buscarTrabajadorPorId(idTrabajador);
         InstitucionPrevision prevision = objPrevisionService.buscarPrevisionPorId(idInstPrevision);
         InstitucionSalud salud = objSaludService.buscarSaludPorId(idInstSalud);
 
+
+
         liquidacion.setTrabajador(trabajador);
         liquidacion.setInstitucionPrevisional(prevision);
         liquidacion.setInstitucionSalud(salud);
+        liquidacion.setSueldoImponible(imponibleId);
+
+        // Llamar a la función calcularSueldo
+        objLiquidacionService.calcularSueldo(liquidacion);
+
+
 
         objLiquidacionService.crearLiquidacion(liquidacion);
 

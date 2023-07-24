@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <title>Listar Usuarios</title>
+</head>
+<header th:include="~{../static/html/navSecundario.html}"></header>
+<body>
+
+
+
+<div class="container">
+  <div class="form-rusuario rounded">
+    <div class="form-registro form-rn col-md-6 rounded mx-auto">
+      <form th:action="@{/liquidacion/crearLiquidacion}" id="formTrabajador" method="post">
+        <div class="text-center mb-3">
+          <h5>Crear Liquidacion</h5>
+        </div>
+        <div class="mt-4 mb-3">
+          <label for="trabajadorId" class="form-label">Trabajador</label>
+          <select class="form-control" id="trabajadorId" name="trabajadorId">
+            <option th:each="trabajador : ${trabajadores}" th:value="${trabajador.idTrabajador}" th:text="${trabajador.nombre}"></option>
+          </select>
+        </div>
+
+
+
+        <div class="mb-3">
+          <label for="imponibleId" class="form-label">Sueldo Imponible</label>
+          <input type="number" class="form-control" id="imponibleId" name="imponibleId">
+        </div>
+
+
+
+
+        <div class="mt-4 mb-3">
+          <label for="idSalud" class="form-label">Previsión</label>
+          <select class="form-control" id="idSalud" name="idSalud">
+            <option th:each="salud : ${salud}" th:value="${salud.idInstSalud}" th:text="${salud.descripcion}"></option>
+          </select>
+        </div>
+
+
+
+
+
+
+<!--
+        <div class="mb-3">
+          <label for="montoSalud" class="form-label">Monto Salud</label>
+          <input type="number" class="form-control" id="montoSalud" name="montoSalud">
+        </div>
+-->
+        <div class="mt-4 mb-3">
+          <label for="idPrevision" class="form-label">AFP</label>
+          <select class="form-control" id="idPrevision" name="idPrevision">
+            <option th:each="prevision : ${previsiones}" th:value="${prevision.idInstPrevision}" th:text="${prevision.descripcion}"></option>
+          </select>
+        </div>
+
+
+
+<!--
+        <div class="mb-3">
+          <label for="montoAfp" class="form-label">Monto AFP</label>
+          <input type="numbr" class="form-control" id="montoAfp" name="montoAfp">
+        </div>
+-->
+
+<!--
+        <div class="mb-3">
+          <label for="descuentos" class="form-label">Total Descuentos</label>
+          <input type="text" class="form-control" id="descuentos" name="descuentos">
+        </div>
+
+-->
+
+
+<!--
+        <div class="mb-3">
+          <label for="totalHaberes" class="form-label">Total Haberes</label>
+          <input type="number" class="form-control" id="totalHaberes" name="totalHaberes">
+        </div>
+-->
+
+        <div class="mb-3">
+          <label for="anticipo" class="form-label">Anticipo</label>
+          <input type="number" class="form-control" id="anticipo" name="anticipo">
+        </div>
+
+
+<!--
+        <div class="mb-3">
+          <label for="sueldoLiquido" class="form-label">Sueldo Liquido</label>
+          <input type="text" class="form-control" id="sueldoLiquido" name="sueldoLiquido">
+        </div>
+-->
+
+
+
+
+
+
+
+        <button type="submit" class="btn btn-primary">Agregar Liquidacion</button>
+      </form>
+    </div>
+  </div>
+</div>
+<footer th:include="~{../static/html/footer.html}"></footer>
+</body>
+</html>
