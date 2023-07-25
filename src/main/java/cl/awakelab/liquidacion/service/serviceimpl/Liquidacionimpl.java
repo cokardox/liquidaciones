@@ -30,15 +30,15 @@ public class Liquidacionimpl implements ILiquidacionService {
     }
 
     @Override
-    public Liquidacion actualizarLiquidacion(Liquidacion liquidacion, long idLiquidacion) {
-            Liquidacion liqui = objLiquidacionRepo.findById(idLiquidacion).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
+    public Liquidacion actualizarLiquidacion(Liquidacion liquidacionActualizar, long idLiquidacion) {
+            Liquidacion liquidacion = objLiquidacionRepo.findById(idLiquidacion).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
             liquidacion.setTrabajador(liquidacionActualizar.getTrabajador());
             liquidacion.setPeriodo(liquidacionActualizar.getPeriodo());
             liquidacion.setSueldoImponible(liquidacionActualizar.getSueldoImponible());
             liquidacion.setSueldoLiquido(liquidacionActualizar.getSueldoLiquido());
-            liquidacion.setIdInstSalud(liquidacionActualizar.getIdInstSalud());
+            liquidacion.setInstitucionSalud(liquidacionActualizar.getInstitucionSalud());
             liquidacion.setMontoInstSalud(liquidacionActualizar.getMontoInstSalud());
-            liquidacion.setIdInstPrevisional(liquidacionActualizar.getIdInstPrevisional());
+            liquidacion.setInstitucionPrevisional(liquidacionActualizar.getInstitucionPrevisional());
             liquidacion.setMontoInstPrevisional(liquidacionActualizar.getMontoInstPrevisional());
             liquidacion.setTotalDescuento(liquidacionActualizar.getTotalDescuento());
             liquidacion.setTotalHaberes(liquidacionActualizar.getTotalHaberes());
