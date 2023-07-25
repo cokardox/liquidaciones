@@ -75,7 +75,7 @@ public class LiquidacionController {
                                   @RequestParam("trabajadorId") int idTrabajador,
                                   @RequestParam("idPrevision") int idInstPrevision,
                                   @RequestParam("idSalud") int idInstSalud,
-                                    @RequestParam("imponibleId") int imponibleId){
+                                   @RequestParam("imponibleId") int imponibleId){
 
         Trabajador trabajador = objTrabajadorService.buscarTrabajadorPorId(idTrabajador);
         InstitucionPrevision prevision = objPrevisionService.buscarPrevisionPorId(idInstPrevision);

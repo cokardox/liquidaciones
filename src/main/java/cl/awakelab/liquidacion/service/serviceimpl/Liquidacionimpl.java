@@ -31,8 +31,21 @@ public class Liquidacionimpl implements ILiquidacionService {
 
     @Override
     public Liquidacion actualizarLiquidacion(Liquidacion liquidacion, long idLiquidacion) {
-        return null;
-    }
+            Liquidacion liqui = objLiquidacionRepo.findById(idLiquidacion).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
+            liquidacion.setTrabajador(liquidacionActualizar.getTrabajador());
+            liquidacion.setPeriodo(liquidacionActualizar.getPeriodo());
+            liquidacion.setSueldoImponible(liquidacionActualizar.getSueldoImponible());
+            liquidacion.setSueldoLiquido(liquidacionActualizar.getSueldoLiquido());
+            liquidacion.setIdInstSalud(liquidacionActualizar.getIdInstSalud());
+            liquidacion.setMontoInstSalud(liquidacionActualizar.getMontoInstSalud());
+            liquidacion.setIdInstPrevisional(liquidacionActualizar.getIdInstPrevisional());
+            liquidacion.setMontoInstPrevisional(liquidacionActualizar.getMontoInstPrevisional());
+            liquidacion.setTotalDescuento(liquidacionActualizar.getTotalDescuento());
+            liquidacion.setTotalHaberes(liquidacionActualizar.getTotalHaberes());
+            liquidacion.setAnticipo(liquidacionActualizar.getAnticipo());
+            return objLiquidacionRepo.save(liquidacion);
+        }
+
 
    @Override
     public void eliminarLiquidacion(long idLiquidacion) {
@@ -71,6 +84,12 @@ public class Liquidacionimpl implements ILiquidacionService {
         liquidacion.setMontoInstSalud((int) descuentoSalud);
         liquidacion.setMontoInstPrevisional((int) descuentoAFP);
 
+
+        // guardando los descuentos en una variable destinada descuento total de la tabla liquidacion
+        float descuentoTotal = (descuentoAFP + descuentoAFP);
+        liquidacion.setTotalDescuento((int) descuentoTotal);
+        // seteando el total haberes
+        liquidacion.setTotalHaberes(liquidacion.getSueldoImponible());
 
         // Calcular el sueldo liquido
 
