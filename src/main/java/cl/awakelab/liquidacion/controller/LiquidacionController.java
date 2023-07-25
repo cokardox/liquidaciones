@@ -97,18 +97,54 @@ public class LiquidacionController {
 
         return "redirect:/liquidacion/listLiquidacion";
     }
+    //EDITAR
 
 
+    @GetMapping("/{idLiquidacion}")
+    public String buscarLiquidacionPorId(@PathVariable int idLiquidacion, Model model) {
+        Liquidacion liquidacion = objLiquidacionService.buscarLiquidacionPorId(idLiquidacion);
+        List<Trabajador> trabajadores = objTrabajadorService.listarTrabajadores();
+        List<InstitucionPrevision> previsiones = objPrevisionService.listarInstitucionPrevision();
+        List<InstitucionSalud> salud = objSaludService.listarInstitucionSalud();
 
+        model.addAttribute("liquidacion", liquidacion);
+        model.addAttribute("trabajadores", trabajadores);
+        model.addAttribute("previsiones", previsiones);
+        model.addAttribute("salud", salud);
 
-    /*
-    @PostMapping("/crearEmpleador")
-    public String crearEmpleador(@ModelAttribute Empleador empleador,
-                                 @RequestParam("usuarioId") int usuarioId) {
-        Usuario usuario = objUsuarioService.buscarUsuarioPorId(usuarioId);
-        empleador.setUsuario(usuario);
-        objEmpleadorService.crearEmpleador(empleador);
-        return "redirect:/empleador/listEmpleador";
+        return "formLiquidacion"; // Aquí se muestra la vista de edición "formLiquidacion" con los detalles de la liquidación para editar.
     }
-*/
+
+
+    //ACTUALIZAR V1
+    @PostMapping("/liquidacion/{idLiquidacion}")
+    public String actualizarLiquidacion(@ModelAttribute Liquidacion liquidacionActualizar, @PathVariable int idLiquidacion,
+                                        @RequestParam("idPrevision") int idPrevision,
+                                        @RequestParam("idSalud") int idSalud,
+                                        @RequestParam("imponibleId") int imponibleId,
+                                        @RequestParam("trabajadorId") int idTrabajador) {
+
+        Trabajador trabajador = objTrabajadorService.buscarTrabajadorPorId(idTrabajador);
+        InstitucionPrevision prevision = objPrevisionService.buscarPrevisionPorId(idPrevision);
+        InstitucionSalud salud = objSaludService.buscarSaludPorId(idSalud);
+
+        // Buscar la liquidación existente por su ID
+        Liquidacion liquidacionExistente = objLiquidacionService.buscarLiquidacionPorId(idLiquidacion);
+
+        liquidacionExistente.setTrabajador(trabajador);
+        liquidacionExistente.setInstitucionPrevisional(prevision);
+        liquidacionExistente.setInstitucionSalud(salud);
+        liquidacionExistente.setSueldoImponible(imponibleId);
+
+        // Llamar a la función calcularSueldo para recalcular los campos correspondientes
+        objLiquidacionService.calcularSueldo(liquidacionExistente);
+
+        // Actualizar la liquidación en la base de datos
+        objLiquidacionService.actualizarLiquidacion(liquidacionExistente, idLiquidacion);
+
+        return "redirect:/liquidacion/listLiquidacion";
+    }
+
+
+
 }

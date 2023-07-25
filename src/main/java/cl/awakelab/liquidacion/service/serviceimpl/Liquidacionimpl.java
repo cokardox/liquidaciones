@@ -30,21 +30,19 @@ public class Liquidacionimpl implements ILiquidacionService {
     }
 
     @Override
-    public Liquidacion actualizarLiquidacion(Liquidacion liquidacionActualizar, long idLiquidacion) {
-            Liquidacion liquidacion = objLiquidacionRepo.findById(idLiquidacion).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
-            liquidacion.setTrabajador(liquidacionActualizar.getTrabajador());
-            liquidacion.setPeriodo(liquidacionActualizar.getPeriodo());
-            liquidacion.setSueldoImponible(liquidacionActualizar.getSueldoImponible());
-            liquidacion.setSueldoLiquido(liquidacionActualizar.getSueldoLiquido());
-            liquidacion.setInstitucionSalud(liquidacionActualizar.getInstitucionSalud());
-            liquidacion.setMontoInstSalud(liquidacionActualizar.getMontoInstSalud());
-            liquidacion.setInstitucionPrevisional(liquidacionActualizar.getInstitucionPrevisional());
-            liquidacion.setMontoInstPrevisional(liquidacionActualizar.getMontoInstPrevisional());
-            liquidacion.setTotalDescuento(liquidacionActualizar.getTotalDescuento());
-            liquidacion.setTotalHaberes(liquidacionActualizar.getTotalHaberes());
-            liquidacion.setAnticipo(liquidacionActualizar.getAnticipo());
-            return objLiquidacionRepo.save(liquidacion);
-        }
+    public Liquidacion actualizarLiquidacion(Liquidacion liquidacion, long idLiquidacion) {
+        Liquidacion liquidacionExistente = objLiquidacionRepo.findById(idLiquidacion).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
+
+        liquidacionExistente.setTrabajador(liquidacion.getTrabajador());
+        liquidacionExistente.setInstitucionPrevisional(liquidacion.getInstitucionPrevisional());
+        liquidacionExistente.setInstitucionSalud(liquidacion.getInstitucionSalud());
+        liquidacionExistente.setSueldoImponible(liquidacion.getSueldoImponible());
+
+        // La función se encarga de recalcular y actualizar los campos restantes
+        calcularSueldo(liquidacionExistente);
+
+        return objLiquidacionRepo.save(liquidacionExistente);
+    }
 
 
    @Override
