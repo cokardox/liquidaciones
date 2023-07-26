@@ -4,6 +4,9 @@
 <head>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.25.0/font/bootstrap-icons.css">
+
   <meta charset="UTF-8">
   <title>Liquidaciones</title>
 </head>
@@ -36,36 +39,15 @@
         <td th:text="${liquidacion.sueldoLiquido}"></td>
         <td>
 
-    <!--      <form th:action="@{/liquidacion/eliminar/{idLiquidacion}(idTrabajador=${liquidacion.trabajador.idTrabajador})}" th:method="post" onsubmit="return confirm('¿Eliminar esta liquidación?')">
-            <button type="submit" name="idLiquidacion" value="${liquidacion.idLiquidacion}" class="btn btn-danger btn-sm">
-              Eliminar
-            </button>
-          </form>
--->
-
-          <!--
-          <form th:action="@{/liquidacion/eliminar/{idLiquidacion}(idTrabajador=${liquidacion.trabajador.idTrabajador})}" th:method="post" onsubmit="return confirm('¿Eliminar esta liquidación?')">
-            <button type="submit" name="idTrabajador" value="${liquidacion.trabajador.idTrabajador}" class="btn btn-danger btn-sm">
-              Eliminar
-            </button>
-          </form>
-           -->
-          <!-- ... -->
-          <form th:action="@{/liquidacion/eliminar/{idLiquidacion}(idLiquidacion=${liquidacion.idLiquidacion},idTrabajador=${liquidacion.trabajador.idTrabajador})}" th:method="post" onsubmit="return confirm('¿Eliminar esta liquidación?')">
-            <button type="submit" class="btn btn-danger btn-sm">
-              Eliminar
-            </button>
+          <form th:action="@{/liquidacion/eliminar/{idLiquidacion}(idLiquidacion=${liquidacion.idLiquidacion})}" th:method="post" onsubmit="return confirm('¿Eliminar esta liquidación?')">
+            <button type="submit" class="btn btn-danger btn-sm"> <i class="fas fa-trash"></i></button>
           </form>
 
-          <!-- ... -->
-
-
-
-
-          <form th:action="@{/liquidacion/editar/{idLiquidacion}(idTrabajador=${liquidacion.trabajador.idTrabajador})}" th:method="get">
+          <form th:action="@{/liquidacion/editar/{idLiquidacion}(idLiquidacion=${liquidacion.idLiquidacion})}" th:method="get">
             <button type="submit" class="btn btn-primary btn-sm">
-              Editar
+              <i class="fas fa-pencil-alt"></i>
             </button>
+          </form>
           </form>
 
         </td>

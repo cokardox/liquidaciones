@@ -4,12 +4,15 @@ import cl.awakelab.liquidacion.entity.InstitucionSalud;
 import cl.awakelab.liquidacion.entity.*;
 import cl.awakelab.liquidacion.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/trabajador")
 @Controller
@@ -99,30 +102,7 @@ public class TrabajadorController {
     }
 
 
-   // ACTUALIZAR TRABAJADOR V2
-
-  /*
-    @PostMapping("/actualizar/{idTrabajador}")
-    public String actualizarTrabajador(@ModelAttribute Trabajador trabajador, @PathVariable int idTrabajador,
-                                       @RequestParam("idPrevision") int idPrevision,
-                                       @RequestParam("idSalud") int idSalud,
-                                       @RequestParam("empleadorId") int idEmpleador) {
-        InstitucionPrevision prevision = objPrevisionService.buscarPrevisionPorId(idPrevision);
-        InstitucionSalud salud = objSaludService.buscarSaludPorId(idSalud);
-        Empleador empleador = objEmpleadorService.buscarEmpleadorPorId(idEmpleador);
-
-        trabajador.setInstitucionPrevision(prevision);
-        trabajador.setInstitucionSalud(salud);
-        trabajador.setListaEmpleadores(Collections.singletonList(empleador));
-
-        objTrabajadorService.actualizarTrabajador(trabajador, idTrabajador);
-
-        return "redirect:/trabajador/listTrabajador";
-
-*/
-
-
-    //ACTUALIZAR V1
+    //ACTUALIZAR
         @PostMapping("/actualizar/{idTrabajador}")
         public String actualizarTrabajador(@ModelAttribute Trabajador trabajador, @PathVariable int idTrabajador,
         @RequestParam("idPrevision") int idPrevision,
@@ -139,17 +119,6 @@ public class TrabajadorController {
 
             return "redirect:/trabajador/listTrabajador";
             }
-
-
-
-
-
-
-
-
-
-
-
 
 
     @GetMapping("/editar/{idTrabajador}")

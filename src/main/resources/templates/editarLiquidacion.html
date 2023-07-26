@@ -1,10 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Listar Usuarios</title>
 </head>
+<header th:include="~{../static/html/navSecundario.html}"></header>
 <body>
+
+
+
+<div class="container">
+    <div class="form-rusuario rounded">
+        <div class="form-registro form-rn col-md-6 rounded mx-auto">
+            <form th:action="@{/liquidacion/actualizar/{idLiquidacion}(idLiquidacion=${liquidacion.idLiquidacion})}" th:object="${liquidacion}" method="post">
+                <input type="hidden" th:field="*{idLiquidacion}" />
+                <div class="text-center mb-3">
+                    <h5>Editar Liquidacion</h5>
+                        </div>
+                <div class="mt-4 mb-3">
+                    <label for="trabajadorId" class="form-label">Trabajador</label>
+                    <select class="form-control" id="trabajadorId" name="trabajadorId" onchange="cargarDatosTrabajador()">
+                        <option value="">Seleccione un trabajador</option>
+                        <option th:each="trabajador : ${trabajadores}" th:value="${trabajador.idTrabajador}" th:text="${trabajador.nombre}" th:selected="${trabajador.idTrabajador == liquidacion.trabajador.idTrabajador}"></option>
+                    </select>
+                </div>
+
+                        <div class="mb-3">
+                            <label for="imponibleId" class="form-label">Sueldo Imponible</label>
+                            <input type="number" class="form-control" id="imponibleId" name="imponibleId" th:value="${liquidacion.sueldoImponible}">
+                        </div>
+
+                        <div class="mt-4 mb-3">
+                            <label for="idSalud" class="form-label">Previsión</label>
+                            <select class="form-control" id="idSalud" name="idSalud">
+                                <option th:each="salud : ${salud}" th:value="${salud.idInstSalud}" th:text="${salud.descripcion}"></option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="montoSalud" class="form-label">Monto Salud</label>
+                          <input type="number" class="form-control" id="montoSalud" name="montoSalud" th:value="${liquidacion.montoInstSalud}">
+
+                        </div>
+
+                        <div class="mt-4 mb-3">
+                            <label for="idPrevision" class="form-label">AFP</label>
+                            <select class="form-control" id="idPrevision" name="idPrevision">
+                                <option th:each="prevision : ${previsiones}" th:value="${prevision.idInstPrevision}" th:text="${prevision.descripcion}"></option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="montoAfp" class="form-label">Monto AFP</label>
+                            <input type="number" class="form-control" id="montoAfp" name="montoAfp" th:value="${liquidacion.montoInstPrevisional}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descuentos" class="form-label">Total Descuentos</label>
+                            <input type="number" class="form-control" id="descuentos" name="descuentos" th:value="${liquidacion.totalDescuento}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="totalHaberes" class="form-label">Total Haberes</label>
+                            <input type="number" class="form-control" id="totalHaberes" name="totalHaberes" th:value="${liquidacion.totalHaberes}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="anticipo" class="form-label">Anticipo</label>
+                            <input type="number" class="form-control" id="anticipo" name="anticipo" th:value="${liquidacion.anticipo}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="sueldoLiquido" class="form-label">Sueldo Liquido</label>
+                            <input type="number" class="form-control" id="sueldoLiquido" name="sueldoLiquido" th:value="${liquidacion.sueldoLiquido}">
+                        </div>
+
+                 <button type="submit" class="btn btn-primary">Actualizar Liquidacion</button>
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:include="~{../static/html/footer.html}"></footer>
 
 </body>
 </html>

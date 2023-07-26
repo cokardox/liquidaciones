@@ -1,8 +1,5 @@
 package cl.awakelab.liquidacion.service.serviceimpl;
-
-import cl.awakelab.liquidacion.entity.Empleador;
 import cl.awakelab.liquidacion.entity.InstitucionPrevision;
-import cl.awakelab.liquidacion.repository.IEmpleadorRepository;
 import cl.awakelab.liquidacion.repository.IInstitucionPrevisionRepository;
 import cl.awakelab.liquidacion.service.IInstitucionPrevisionService;
 import org.springframework.beans.factory.annotation.Autowired;

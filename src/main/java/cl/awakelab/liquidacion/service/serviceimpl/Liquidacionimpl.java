@@ -31,12 +31,14 @@ public class Liquidacionimpl implements ILiquidacionService {
 
     @Override
     public Liquidacion actualizarLiquidacion(Liquidacion liquidacion, long idLiquidacion) {
+
         Liquidacion liquidacionExistente = objLiquidacionRepo.findById(idLiquidacion).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
 
         liquidacionExistente.setTrabajador(liquidacion.getTrabajador());
         liquidacionExistente.setInstitucionPrevisional(liquidacion.getInstitucionPrevisional());
         liquidacionExistente.setInstitucionSalud(liquidacion.getInstitucionSalud());
         liquidacionExistente.setSueldoImponible(liquidacion.getSueldoImponible());
+        liquidacionExistente.setAnticipo(liquidacion.getAnticipo());
 
         // La función se encarga de recalcular y actualizar los campos restantes
         calcularSueldo(liquidacionExistente);
@@ -71,6 +73,9 @@ public class Liquidacionimpl implements ILiquidacionService {
         liquidacion.setInstitucionPrevisional(institucionPrevisional);
 
 
+        // Recalculando el sueldo imponible
+        liquidacion.setSueldoImponible(liquidacion.getSueldoImponible());
+
         // calculando los dscto
 
         float descuentoSalud = liquidacion.getSueldoImponible() * (institucionSalud.getPorcDcto() /100);
@@ -102,7 +107,7 @@ public class Liquidacionimpl implements ILiquidacionService {
 
         //Guardar la Liquidacion
 
-        objLiquidacionRepo.save(liquidacion);
+        //objLiquidacionRepo.save(liquidacion);
 
 
 

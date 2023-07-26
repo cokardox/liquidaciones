@@ -41,18 +41,6 @@
             <option th:each="salud : ${salud}" th:value="${salud.idInstSalud}" th:text="${salud.descripcion}"></option>
           </select>
         </div>
-
-
-
-
-
-
-<!--
-        <div class="mb-3">
-          <label for="montoSalud" class="form-label">Monto Salud</label>
-          <input type="number" class="form-control" id="montoSalud" name="montoSalud">
-        </div>
--->
         <div class="mt-4 mb-3">
           <label for="idPrevision" class="form-label">AFP</label>
           <select class="form-control" id="idPrevision" name="idPrevision">
@@ -60,55 +48,16 @@
           </select>
         </div>
 
-
-
-<!--
-        <div class="mb-3">
-          <label for="montoAfp" class="form-label">Monto AFP</label>
-          <input type="numbr" class="form-control" id="montoAfp" name="montoAfp">
-        </div>
--->
-
-<!--
-        <div class="mb-3">
-          <label for="descuentos" class="form-label">Total Descuentos</label>
-          <input type="text" class="form-control" id="descuentos" name="descuentos">
-        </div>
-
--->
-
-
-<!--
-        <div class="mb-3">
-          <label for="totalHaberes" class="form-label">Total Haberes</label>
-          <input type="number" class="form-control" id="totalHaberes" name="totalHaberes">
-        </div>
--->
-
         <div class="mb-3">
           <label for="anticipo" class="form-label">Anticipo</label>
           <input type="number" class="form-control" id="anticipo" name="anticipo">
         </div>
-
-
-<!--
-        <div class="mb-3">
-          <label for="sueldoLiquido" class="form-label">Sueldo Liquido</label>
-          <input type="text" class="form-control" id="sueldoLiquido" name="sueldoLiquido">
-        </div>
--->
-
-
-
-
-
-
-
         <button type="submit" class="btn btn-primary">Agregar Liquidacion</button>
       </form>
     </div>
   </div>
 </div>
+
 <footer th:include="~{../static/html/footer.html}"></footer>
 </body>
 </html>

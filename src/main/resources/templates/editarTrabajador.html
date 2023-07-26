@@ -41,19 +41,6 @@
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" th:field="*{email}">
                 </div>
-             <!--   <div class="mb-3">
-                    <label for="empleadorId" class="form-label">Empleador</label>
-                    <select class="form-control" id="empleadorId" name="empleadorId" th:field="*{listaEmpleadores[0].idEmpleador}">
-                        <option th:each="empleador : ${empleadores}"
-                                th:value="${empleador.idEmpleador}"
-                                th:text="${empleador.nombre}"
-                                th:selected="${empleador.idEmpleador == trabajador.listaEmpleadores[0].idEmpleador}">
-
-
-                        </option>
-                    </select>
-
-                </div>   -->
                 <div class="mb-3">
                     <label for="idPrevision" class="form-label">AFP</label>
                     <select class="form-control" id="idPrevision" name="idPrevision">
@@ -67,7 +54,6 @@
 
                 </div>
 
-                <!-- Select para salud -->
                 <div class="mb-3">
                     <label for="idSalud" class="form-label">Institución de Salud</label>
                     <select class="form-control" id="idSalud" name="idSalud">

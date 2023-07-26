@@ -97,11 +97,15 @@ public class LiquidacionController {
 
         return "redirect:/liquidacion/listLiquidacion";
     }
+
+
+
+
     //EDITAR
 
 
-    @GetMapping("/{idLiquidacion}")
-    public String buscarLiquidacionPorId(@PathVariable int idLiquidacion, Model model) {
+    @GetMapping("/editar/{idLiquidacion}")
+    public String editarLiquidacion(@PathVariable long idLiquidacion, Model model) {
         Liquidacion liquidacion = objLiquidacionService.buscarLiquidacionPorId(idLiquidacion);
         List<Trabajador> trabajadores = objTrabajadorService.listarTrabajadores();
         List<InstitucionPrevision> previsiones = objPrevisionService.listarInstitucionPrevision();
@@ -112,39 +116,40 @@ public class LiquidacionController {
         model.addAttribute("previsiones", previsiones);
         model.addAttribute("salud", salud);
 
-        return "formLiquidacion"; // Aquí se muestra la vista de edición "formLiquidacion" con los detalles de la liquidación para editar.
+        return "editarLiquidacion"; // Aquí se muestra la vista de edición "editarLiquidacion" con los detalles de la liquidación para editar.
     }
 
 
-    //ACTUALIZAR V1
-    @PostMapping("/liquidacion/{idLiquidacion}")
-    public String actualizarLiquidacion(@ModelAttribute Liquidacion liquidacionActualizar, @PathVariable int idLiquidacion,
-                                        @RequestParam("idPrevision") int idPrevision,
-                                        @RequestParam("idSalud") int idSalud,
+    // ACTUALIZAR LIQUIDACIÓN
+    @PostMapping("/actualizar/{idLiquidacion}")
+    public String actualizarLiquidacion(@ModelAttribute Liquidacion liquidacion,
+                                        @PathVariable long idLiquidacion,
+                                        @RequestParam("trabajadorId") int idTrabajador,
+                                        @RequestParam("idPrevision") int idInstPrevision,
+                                        @RequestParam("idSalud") int idInstSalud,
                                         @RequestParam("imponibleId") int imponibleId,
-                                        @RequestParam("trabajadorId") int idTrabajador) {
+                                        @RequestParam("anticipo") Integer anticipo) {
 
+        // Obtener el objeto Trabajador a partir de su ID
         Trabajador trabajador = objTrabajadorService.buscarTrabajadorPorId(idTrabajador);
-        InstitucionPrevision prevision = objPrevisionService.buscarPrevisionPorId(idPrevision);
-        InstitucionSalud salud = objSaludService.buscarSaludPorId(idSalud);
+        if (trabajador == null) {
+            return "redirect:/error";
+        }
 
-        // Buscar la liquidación existente por su ID
-        Liquidacion liquidacionExistente = objLiquidacionService.buscarLiquidacionPorId(idLiquidacion);
-
-        liquidacionExistente.setTrabajador(trabajador);
-        liquidacionExistente.setInstitucionPrevisional(prevision);
-        liquidacionExistente.setInstitucionSalud(salud);
-        liquidacionExistente.setSueldoImponible(imponibleId);
+        // Actualizar los objetos en la liquidación
+        liquidacion.setTrabajador(trabajador);
+        liquidacion.setInstitucionPrevisional(objPrevisionService.buscarPrevisionPorId(idInstPrevision));
+        liquidacion.setInstitucionSalud(objSaludService.buscarSaludPorId(idInstSalud));
+        liquidacion.setSueldoImponible(imponibleId);
+        liquidacion.setAnticipo(anticipo);
 
         // Llamar a la función calcularSueldo para recalcular los campos correspondientes
-        objLiquidacionService.calcularSueldo(liquidacionExistente);
+        objLiquidacionService.calcularSueldo(liquidacion);
 
         // Actualizar la liquidación en la base de datos
-        objLiquidacionService.actualizarLiquidacion(liquidacionExistente, idLiquidacion);
+        objLiquidacionService.actualizarLiquidacion(liquidacion, idLiquidacion);
 
         return "redirect:/liquidacion/listLiquidacion";
     }
-
-
 
 }

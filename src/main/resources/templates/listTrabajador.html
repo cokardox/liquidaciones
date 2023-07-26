@@ -3,6 +3,8 @@
 <head>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
   <meta charset="UTF-8">
   <title>Liquidaciones</title>
 </head>
@@ -37,13 +39,13 @@
 
           <form th:action="@{/trabajador/eliminar/{idTrabajador}(idTrabajador=${trabajador.idTrabajador})}" th:method="post" onsubmit="return confirm('¿Eliminar este trabajador?')">
             <button type="submit" name="idTrabajador" value="${trabajador.idTrabajador}" class="btn btn-danger btn-sm">
-              Eliminar
+              <i class="fas fa-trash"></i>
             </button>
           </form>
 
           <form th:action="@{/trabajador/editar/{idTrabajador}(idTrabajador=${trabajador.idTrabajador})}" th:method="get">
             <button type="submit" class="btn btn-primary btn-sm">
-              Editar
+              <i class="fas fa-pencil-alt"></i>
             </button>
           </form>
         </td>
